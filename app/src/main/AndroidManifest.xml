@@ -41,5 +41,8 @@
         <activity
             android:name=".admin.AdminDashboardActivity"
             android:exported="true" />
+        <activity
+            android:name=".user.adventure.AdventureModeActivity"
+            android:exported="true" />
     </application>
 </manifest>

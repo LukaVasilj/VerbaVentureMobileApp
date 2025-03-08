@@ -3,6 +3,8 @@ package ba.sum.fsre.hackaton.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import ba.sum.fsre.hackaton.MainActivity;
 import ba.sum.fsre.hackaton.R;
+import ba.sum.fsre.hackaton.user.adventure.AdventureModeActivity;
 
 public class MainPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -92,6 +95,16 @@ public class MainPageActivity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        // Dodana logika za gumb Adventure Mode
+        Button adventureModeButton = findViewById(R.id.adventureModeButton);
+        adventureModeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainPageActivity.this, AdventureModeActivity.class);
+                startActivity(intent);
             }
         });
     }
