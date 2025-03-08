@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hackaton</string>
+    <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+</resources>

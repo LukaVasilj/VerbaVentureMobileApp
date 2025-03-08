@@ -1,0 +1,14 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.google.gms:google-services:4.4.2' // Ensure this line is present
+    }
+}
+
+plugins {
+    alias(libs.plugins.android.application) apply false
+}
