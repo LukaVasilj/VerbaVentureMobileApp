@@ -142,8 +142,6 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             return "Museum";
         } else if (placeName.contains("cafe") || placeName.contains("caffe") || placeName.contains("bar") || placeName.contains("bistro") ) {
             return "Caffe bar";
-        } else if (placeName.contains("landmark")) {
-            return "Landmark";
         }  else if (placeName.contains("pub")) {
             return "Pub";
         } else if (placeName.contains("statue")) {
@@ -154,32 +152,10 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             return "Church";
         } else if (placeName.contains("cathedral")) {
             return "Cathedral";
-        } else if (placeName.contains("mosque")) {
-            return "Mosque";
-        } else if (placeName.contains("synagogue")) {
-            return "Synagogue";
         } else if (placeName.contains("park")) {
             return "Park";
         } else if (placeName.contains("square")) {
             return "Square";
-        } else if (placeName.contains("garden")) {
-            return "Garden";
-        } else if (placeName.contains("theater")) {
-            return "Theater";
-        } else if (placeName.contains("gallery")) {
-            return "Gallery";
-        } else if (placeName.contains("exhibition")) {
-            return "Exhibition";
-        } else if (placeName.contains("library")) {
-            return "Library";
-        } else if (placeName.contains("fountain")) {
-            return "Fountain";
-        } else if (placeName.contains("bridge")) {
-            return "Bridge";
-        } else if (placeName.contains("tourist attraction")) {
-            return "Tourist attraction";
-        } else if (placeName.contains("cultural center")) {
-            return "Cultural center";
         } else {
             return "Other";
         }
@@ -212,11 +188,20 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                 );
                 PlacesClient placesClient = Places.createClient(AdventureModeActivity.this);
 
-                List<String> queries = Arrays.asList("restaurant", "cafe", "museum", "caffe", "bar", "bistro", "pub",
-                        "landmark", "statue", "monument", "church",
-                        "cathedral", "mosque", "synagogue",
-                        "park", "square", "garden", "theater", "gallery", "exhibition",
-                        "library", "fountain", "bridge", "tourist attraction", "cultural center");
+                List<String> queries = Arrays.asList(
+                        "restaurant"
+                        // "cafe",
+                        // "museum",
+                        // "caffe",
+                        // "bar",
+                        // "pub",
+                        // "statue",
+                        // "monument",
+                        // "church",
+                        // "cathedral",
+                        // "square",
+                        // "fountain"
+                );
 
                 for (String query : queries) {
                     FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
