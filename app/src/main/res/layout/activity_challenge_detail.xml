@@ -4,25 +4,34 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/challengeTitleTextView"
+        android:id="@+id/placeNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
-        android:id="@+id/challengeDescriptionTextView"
+        android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/challengeTitleTextView"
+        android:layout_below="@id/placeNameTextView"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/challengeTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/categoryTextView"
         android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/nativeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/challengeDescriptionTextView"
+        android:layout_below="@id/challengeTitleTextView"
         android:layout_marginBottom="16dp" />
 
     <TextView

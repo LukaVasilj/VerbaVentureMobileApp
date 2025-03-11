@@ -1,3 +1,4 @@
+// AdventureModeActivity.java
 package ba.sum.fsre.hackaton.user.adventure;
 
 import android.content.Intent;
@@ -26,11 +27,15 @@ import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRe
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import android.view.View;
-import android.widget.AdapterView;
 
 import ba.sum.fsre.hackaton.R;
 
@@ -87,14 +92,97 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                 String placeName = placesList.get(position);
                 String learningLanguage = getIntent().getStringExtra("learningLanguage");
                 String nativeLanguage = getIntent().getStringExtra("nativeLanguage");
-                Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
-                intent.putExtra("challengeTitle", placeName);
-                intent.putExtra("learningLanguage", learningLanguage);
-                intent.putExtra("nativeLanguage", nativeLanguage);
-                intent.putExtra("challengeDescription", "Naruči kavu na " + learningLanguage + " jeziku u " + placeName);
-                startActivity(intent);
+                String category = getCategoryForPlace(placeName);
+
+                fetchRandomChallenge(category, placeName, learningLanguage, nativeLanguage);
             }
         });
+    }
+
+    private void fetchRandomChallenge(String category, String placeName, String learningLanguage, String nativeLanguage) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // Convert category to lowercase to match Firestore document structure
+        final String finalCategory = category.toLowerCase();
+        db.collection("challenges").document(finalCategory).collection("challenges")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                            Random random = new Random();
+                            int randomIndex = random.nextInt(querySnapshot.size());
+                            DocumentSnapshot document = querySnapshot.getDocuments().get(randomIndex);
+                            String challengeDescription = document.getString("challenge");
+                            String challengeTitle = document.getString("title");
+
+                            Log.d(TAG, "Challenge Title: " + challengeTitle);
+                            Log.d(TAG, "Challenge Description: " + challengeDescription);
+
+                            Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
+                            intent.putExtra("challengeTitle", challengeTitle);
+                            intent.putExtra("learningLanguage", learningLanguage);
+                            intent.putExtra("nativeLanguage", nativeLanguage);
+                            intent.putExtra("challengeDescription", challengeDescription);
+                            intent.putExtra("category", finalCategory);
+                            startActivity(intent);
+                        } else {
+                            Log.e(TAG, "No challenges found for category: " + finalCategory);
+                        }
+                    } else {
+                        Log.e(TAG, "Error getting documents: ", task.getException());
+                    }
+                });
+    }
+
+    private String getCategoryForPlace(String placeName) {
+        placeName = placeName.toLowerCase();
+        if (placeName.contains("restaurant")) {
+            return "Restaurant";
+        } else if (placeName.contains("museum")) {
+            return "Museum";
+        } else if (placeName.contains("cafe") || placeName.contains("caffe") || placeName.contains("bar") || placeName.contains("bistro") ) {
+            return "Caffe bar";
+        } else if (placeName.contains("landmark")) {
+            return "Landmark";
+        }  else if (placeName.contains("pub")) {
+            return "Pub";
+        } else if (placeName.contains("statue")) {
+            return "Statue";
+        } else if (placeName.contains("monument")) {
+            return "Monument";
+        } else if (placeName.contains("church")) {
+            return "Church";
+        } else if (placeName.contains("cathedral")) {
+            return "Cathedral";
+        } else if (placeName.contains("mosque")) {
+            return "Mosque";
+        } else if (placeName.contains("synagogue")) {
+            return "Synagogue";
+        } else if (placeName.contains("park")) {
+            return "Park";
+        } else if (placeName.contains("square")) {
+            return "Square";
+        } else if (placeName.contains("garden")) {
+            return "Garden";
+        } else if (placeName.contains("theater")) {
+            return "Theater";
+        } else if (placeName.contains("gallery")) {
+            return "Gallery";
+        } else if (placeName.contains("exhibition")) {
+            return "Exhibition";
+        } else if (placeName.contains("library")) {
+            return "Library";
+        } else if (placeName.contains("fountain")) {
+            return "Fountain";
+        } else if (placeName.contains("bridge")) {
+            return "Bridge";
+        } else if (placeName.contains("tourist attraction")) {
+            return "Tourist attraction";
+        } else if (placeName.contains("cultural center")) {
+            return "Cultural center";
+        } else {
+            return "Other";
+        }
     }
 
     @Override
@@ -107,7 +195,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         if (googleMap != null) {
             googleMap.clear();
             googleMap.addMarker(new MarkerOptions().position(location).title("Marker in " + city));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15)); // Adjust the zoom level here
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
         }
         new FetchPlacesTask().execute(location);
     }
@@ -124,8 +212,11 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                 );
                 PlacesClient placesClient = Places.createClient(AdventureModeActivity.this);
 
-                // Queries to fetch more places
-                List<String> queries = Arrays.asList("restaurant", "cafe", "museum", "park", "hotel");
+                List<String> queries = Arrays.asList("restaurant", "cafe", "museum", "caffe", "bar", "bistro", "pub",
+                        "landmark", "statue", "monument", "church",
+                        "cathedral", "mosque", "synagogue",
+                        "park", "square", "garden", "theater", "gallery", "exhibition",
+                        "library", "fountain", "bridge", "tourist attraction", "cultural center");
 
                 for (String query : queries) {
                     FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
