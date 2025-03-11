@@ -86,6 +86,8 @@
                     android:layout_weight="1"
                     android:text="Home Learning Mode" />
             </LinearLayout>
+
+
         </RelativeLayout>
     </RelativeLayout>
 

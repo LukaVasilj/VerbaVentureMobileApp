@@ -3,6 +3,15 @@
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-
+    <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
+    <string-array name="native_language_array">
+        <item>Hrvatski</item>
+    </string-array>
+    <string-array name="learning_language_array">
+        <item>Engleski</item>
+    </string-array>
+    <string-array name="city_array">
+        <item>Zagreb</item>
+        <item>Paris</item>
+    </string-array>
 </resources>

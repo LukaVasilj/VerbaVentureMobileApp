@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import ba.sum.fsre.hackaton.MainActivity;
 import ba.sum.fsre.hackaton.R;
-import ba.sum.fsre.hackaton.user.adventure.AdventureModeActivity;
+import ba.sum.fsre.hackaton.user.adventure.LanguageSelectionActivity;
 
 public class MainPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -98,14 +98,16 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        // Dodana logika za gumb Adventure Mode
+        // Update the Adventure Mode button logic
         Button adventureModeButton = findViewById(R.id.adventureModeButton);
         adventureModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainPageActivity.this, AdventureModeActivity.class);
+                Intent intent = new Intent(MainPageActivity.this, LanguageSelectionActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
 }
