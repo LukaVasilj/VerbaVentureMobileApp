@@ -1,16 +1,21 @@
-// LoginActivity.java
 package ba.sum.fsre.hackaton.auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,8 +24,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailField;
     private EditText passwordField;
     private Button loginButton;
+    private TextInputLayout emailLayout;
+    private TextInputLayout passwordLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,20 +53,52 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        emailLayout = findViewById(R.id.emailLayout);
+        passwordLayout = findViewById(R.id.passwordLayout);
+
         emailField = findViewById(R.id.email);
         passwordField = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        TextView signupLink = findViewById(R.id.signupLink);
+        TextView errorMessage = findViewById(R.id.errorMessage);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailField.getText().toString();
-                String password = passwordField.getText().toString();
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+                String email = emailField.getText().toString().trim();
+                String password = passwordField.getText().toString().trim();
+                if (TextUtils.isEmpty(email)) {
+                    emailLayout.setError("Please enter your email");
+                    return;
                 } else {
-                    loginUser(email, password);
+                    emailLayout.setError(null);
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    passwordLayout.setError("Please enter your password");
+                    return;
+                } else {
+                    passwordLayout.setError(null);
+                }
+
+                loginUser(email, password);
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, PasswordRecoveryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -81,25 +118,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void showLoadingScreen() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Signing in...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
-
-    private void hideLoadingScreen() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
-    }
-
     private void loginUser(String email, String password) {
         showLoadingScreen();
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         hideLoadingScreen();
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -127,17 +151,14 @@ public class LoginActivity extends AppCompatActivity {
                             if (document.exists()) {
                                 String role = document.getString("role");
                                 if (UserRole.ADMIN.name().equals(role)) {
-                                    // Redirect to AdminDashboardActivity
                                     Intent intent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
                                     startActivity(intent);
                                 } else {
-                                    // Redirect to MainPageActivity
                                     Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                                     startActivity(intent);
                                 }
                                 finish();
                             } else {
-                                // Create user document if it doesn't exist
                                 Map<String, Object> userData = new HashMap<>();
                                 userData.put("email", user.getEmail());
                                 userData.put("role", UserRole.USER.name());
@@ -146,7 +167,6 @@ public class LoginActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    // Redirect to MainPageActivity
                                                     Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                                                     startActivity(intent);
                                                     finish();
@@ -199,9 +219,9 @@ public class LoginActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         hideLoadingScreen();
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -252,5 +272,18 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void showLoadingScreen() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Signing in...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void hideLoadingScreen() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }

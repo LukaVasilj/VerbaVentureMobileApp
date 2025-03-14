@@ -9,9 +9,19 @@
     </string-array>
     <string-array name="learning_language_array">
         <item>Engleski</item>
+        <item>Španjolski</item>
     </string-array>
     <string-array name="city_array">
         <item>Zagreb</item>
         <item>Paris</item>
+        <item>Use current location</item>
+
+    </string-array>
+    <string-array name="languages_array">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>French</item>
+        <item>Croatian</item>
+        <!-- Add more languages as needed -->
     </string-array>
 </resources>

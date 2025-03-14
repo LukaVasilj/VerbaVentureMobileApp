@@ -44,9 +44,8 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
     private static final String TAG = "AdventureModeActivity";
     private ListView placesListView;
     private GoogleMap googleMap;
-    private static final LatLng ZAGREB_LOCATION = new LatLng(45.8150, 15.9819);
-    private static final LatLng PARIS_LOCATION = new LatLng(48.8566, 2.3522);
     private LatLng selectedLocation;
+    private LatLng placeLocation; // Define placeLocation here
     private String selectedCity;
     private ArrayAdapter<String> placesAdapter;
     private List<String> placesList;
@@ -60,6 +59,8 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         String nativeLanguage = getIntent().getStringExtra("nativeLanguage");
         String learningLanguage = getIntent().getStringExtra("learningLanguage");
         String city = getIntent().getStringExtra("city");
+        double latitude = getIntent().getDoubleExtra("latitude", 0.0);
+        double longitude = getIntent().getDoubleExtra("longitude", 0.0);
 
         // Initialize the Places API
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
@@ -76,13 +77,18 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             mapFragment.getMapAsync(this);
         }
 
-        // Set selected location based on city
-        if (city.equals("Zagreb")) {
-            selectedLocation = ZAGREB_LOCATION;
-            selectedCity = "Zagreb";
-        } else if (city.equals("Paris")) {
-            selectedLocation = PARIS_LOCATION;
-            selectedCity = "Paris";
+        // Set selected location based on city or current location
+        if (city != null && !city.equals("Use current location")) {
+            if (city.equals("Zagreb")) {
+                selectedLocation = new LatLng(45.8150, 15.9819);
+                selectedCity = "Zagreb";
+            } else if (city.equals("Paris")) {
+                selectedLocation = new LatLng(48.8566, 2.3522);
+                selectedCity = "Paris";
+            }
+        } else {
+            selectedLocation = new LatLng(latitude, longitude);
+            selectedCity = "Current Location";
         }
 
         // Set item click listener for ListView
@@ -101,7 +107,6 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
 
     private void fetchRandomChallenge(String category, String placeName, String learningLanguage, String nativeLanguage) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Convert category to lowercase to match Firestore document structure
         final String finalCategory = category.toLowerCase();
         db.collection("challenges").document(finalCategory).collection("challenges")
                 .get()
@@ -118,13 +123,21 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                             Log.d(TAG, "Challenge Title: " + challengeTitle);
                             Log.d(TAG, "Challenge Description: " + challengeDescription);
 
-                            Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
-                            intent.putExtra("challengeTitle", challengeTitle);
-                            intent.putExtra("learningLanguage", learningLanguage);
-                            intent.putExtra("nativeLanguage", nativeLanguage);
-                            intent.putExtra("challengeDescription", challengeDescription);
-                            intent.putExtra("category", finalCategory);
-                            startActivity(intent);
+                            // Fetch place location
+                            fetchPlaceLocation(placeName, placeLocation -> {
+                                Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
+                                intent.putExtra("challengeTitle", challengeTitle);
+                                intent.putExtra("learningLanguage", learningLanguage);
+                                intent.putExtra("nativeLanguage", nativeLanguage);
+                                intent.putExtra("challengeDescription", challengeDescription);
+                                intent.putExtra("category", finalCategory);
+                                intent.putExtra("latitude", selectedLocation.latitude);
+                                intent.putExtra("longitude", selectedLocation.longitude);
+                                intent.putExtra("placeLat", placeLocation.latitude); // Use the correct place latitude
+                                intent.putExtra("placeLng", placeLocation.longitude); // Use the correct place longitude
+                                intent.putExtra("placeName", placeName); // Pass place name
+                                startActivity(intent);
+                            });
                         } else {
                             Log.e(TAG, "No challenges found for category: " + finalCategory);
                         }
@@ -132,6 +145,28 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                         Log.e(TAG, "Error getting documents: ", task.getException());
                     }
                 });
+    }
+
+    private void fetchPlaceLocation(String placeName, OnPlaceLocationFetchedListener listener) {
+        PlacesClient placesClient = Places.createClient(this);
+        FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
+                .setQuery(placeName)
+                .build();
+        placesClient.findAutocompletePredictions(request).addOnSuccessListener(response -> {
+            if (!response.getAutocompletePredictions().isEmpty()) {
+                String placeId = response.getAutocompletePredictions().get(0).getPlaceId();
+                FetchPlaceRequest fetchPlaceRequest = FetchPlaceRequest.builder(placeId, Arrays.asList(Place.Field.LAT_LNG)).build();
+                placesClient.fetchPlace(fetchPlaceRequest).addOnSuccessListener(fetchPlaceResponse -> {
+                    Place place = fetchPlaceResponse.getPlace();
+                    placeLocation = place.getLatLng();
+                    listener.onPlaceLocationFetched(placeLocation);
+                });
+            }
+        });
+    }
+
+    interface OnPlaceLocationFetchedListener {
+        void onPlaceLocationFetched(LatLng placeLocation);
     }
 
     private String getCategoryForPlace(String placeName) {
@@ -183,25 +218,12 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             try {
                 LatLng location = locations[0];
                 LocationBias locationBias = RectangularBounds.newInstance(
-                        new LatLng(location.latitude - 0.1, location.longitude - 0.1),
-                        new LatLng(location.latitude + 0.1, location.longitude + 0.1)
+                        new LatLng(location.latitude - 0.0045, location.longitude - 0.0045),
+                        new LatLng(location.latitude + 0.0045, location.longitude + 0.0045)
                 );
                 PlacesClient placesClient = Places.createClient(AdventureModeActivity.this);
 
-                List<String> queries = Arrays.asList(
-                        "restaurant"
-                        // "cafe",
-                        // "museum",
-                        // "caffe",
-                        // "bar",
-                        // "pub",
-                        // "statue",
-                        // "monument",
-                        // "church",
-                        // "cathedral",
-                        // "square",
-                        // "fountain"
-                );
+                List<String> queries = Arrays.asList("restaurant");
 
                 for (String query : queries) {
                     FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
