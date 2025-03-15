@@ -4,12 +4,60 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
+    <string name="select_language">Select Language</string>
+    <string name="change_language">Change Language</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="start_adventure">Start Adventure</string>
+    <string name="welcome_message">Welcome, %1$s!</string>
+    <string name="points">Points: %1$d</string>
+    <string name="level">Level: %1$d</string>
+    <string name="badges">Badges: %1$d</string>
+    <string name="adventure_mode">Adventure Mode</string>
+    <string name="home_learning_mode">Home Learning Mode</string>
+    <string name="category">Category: %1$s</string>
+    <string name="distance">Distance: %1$.2f meters</string>
+    <string name="start_challenge">Start Challenge</string>
+    <string name="tts_play">Play</string>
+    <!-- Login -->
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="sign_up">Don\'t have an account? Sign up</string>
+    <string name="invalid_credentials">Invalid email or password</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="signing_in">Signing in...</string>
+    <string name="verify_email">Please verify your email address.</string>
+    <string name="authentication_failed">Authentication Failed.</string>
+    <string name="google_sign_in_failed">Google sign-in failed: %1$d</string>
+    <string name="failed_to_fetch_user_role">Failed to fetch user role.</string>
+    <string name="failed_to_save_user_data">Failed to save user data.</string>
+    <!-- Register -->
+    <string name="username_hint">Username</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="terms_and_conditions">I agree to the <u>Terms and Conditions</u> and <u>Privacy Policy</u></string>    <string name="already_have_account">Already have an account? Login here</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="invalid_password">Password must be at least 8 characters, include an uppercase letter, a number, and a special character</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="please_enter_username">Please enter a username</string>
+    <string name="agree_terms_conditions">You must agree to the terms and conditions</string>
+    <string name="verification_email_sent">Verification email sent</string>
+    <string name="failed_to_send_verification_email">Failed to send verification email</string>
+    <string name="registration_failed">Registration failed: %1$s</string>
+    <string name="terms_text">Terms and Conditions</string>
+    <string name="privacy_text">Privacy Policy</string>
+
+    <string name="use_current_location">Use current location</string>
+
+
     <string-array name="native_language_array">
-        <item>Hrvatski</item>
+        <item>Croatian</item>
     </string-array>
     <string-array name="learning_language_array">
-        <item>Engleski</item>
-        <item>Španjolski</item>
+        <item>English</item>
+        <item>Spanish</item>
     </string-array>
     <string-array name="city_array">
         <item>Zagreb</item>

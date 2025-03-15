@@ -5,12 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <Spinner
-        android:id="@+id/nativeLanguageSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="16dp" />
+
 
     <Spinner
         android:id="@+id/learningLanguageSpinner"
@@ -30,5 +25,5 @@
         android:id="@+id/startAdventureButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Adventure" />
+        android:text="@string/start_adventure" />
 </LinearLayout>

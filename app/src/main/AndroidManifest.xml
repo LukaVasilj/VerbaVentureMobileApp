@@ -80,6 +80,8 @@
         <activity
             android:name=".user.adventure.ChallengeDetailActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".user.SettingsActivity"
+            android:exported="true" />
     </application>
 </manifest>

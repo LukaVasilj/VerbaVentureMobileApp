@@ -9,9 +9,9 @@
         android:icon="@drawable/ic_map"
         android:title="Map" />
     <item
-        android:id="@+id/navigation_challenges"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_challenges"
-        android:title="Challenges" />
+        android:title="Settings" />
     <item
         android:id="@+id/navigation_progress"
         android:icon="@drawable/ic_progress"

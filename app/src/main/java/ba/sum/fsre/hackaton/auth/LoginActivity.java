@@ -69,14 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailField.getText().toString().trim();
                 String password = passwordField.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
-                    emailLayout.setError("Please enter your email");
+                    emailLayout.setError(getString(R.string.please_enter_email));
                     return;
                 } else {
                     emailLayout.setError(null);
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    passwordLayout.setError("Please enter your password");
+                    passwordLayout.setError(getString(R.string.please_enter_password));
                     return;
                 } else {
                     passwordLayout.setError(null);
@@ -130,11 +130,11 @@ public class LoginActivity extends AppCompatActivity {
                             if (user != null && user.isEmailVerified()) {
                                 fetchUserRole(user);
                             } else {
-                                Toast.makeText(LoginActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, getString(R.string.verify_email), Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Log.w("LoginActivity", "Authentication Failed", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -172,14 +172,14 @@ public class LoginActivity extends AppCompatActivity {
                                                     finish();
                                                 } else {
                                                     Log.w("LoginActivity", "Failed to create user document", task.getException());
-                                                    Toast.makeText(LoginActivity.this, "Failed to fetch user role.", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(LoginActivity.this, getString(R.string.failed_to_fetch_user_role), Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
                             }
                         } else {
                             Log.w("LoginActivity", "Fetch failed", task.getException());
-                            Toast.makeText(LoginActivity.this, "Failed to fetch user role.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.failed_to_fetch_user_role), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -212,7 +212,7 @@ public class LoginActivity extends AppCompatActivity {
             firebaseAuthWithGoogle(account);
         } catch (ApiException e) {
             Log.w("LoginActivity", "Google sign-in failed", e);
-            Toast.makeText(this, "Google sign-in failed: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.google_sign_in_failed, e.getStatusCode()), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -232,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.w("LoginActivity", "Authentication Failed", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -259,7 +259,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     fetchUserRole(user);
                                                 } else {
                                                     Log.w("LoginActivity", "Failed to create user document", task.getException());
-                                                    Toast.makeText(LoginActivity.this, "Failed to save user data.", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(LoginActivity.this, getString(R.string.failed_to_save_user_data), Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
@@ -268,7 +268,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.w("LoginActivity", "Fetch failed", task.getException());
-                            Toast.makeText(LoginActivity.this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.failed_to_fetch_user_role), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -276,7 +276,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoadingScreen() {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Signing in...");
+        progressDialog.setMessage(getString(R.string.signing_in));
         progressDialog.setCancelable(false);
         progressDialog.show();
     }

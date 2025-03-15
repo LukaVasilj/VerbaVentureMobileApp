@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import android.view.View;
+import ba.sum.fsre.hackaton.utils.TranslationUtil;
 
 import ba.sum.fsre.hackaton.R;
 
@@ -77,8 +78,11 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             mapFragment.getMapAsync(this);
         }
 
+        // Get the localized string for "Use current location"
+        String useCurrentLocation = getString(R.string.use_current_location);
+
         // Set selected location based on city or current location
-        if (city != null && !city.equals("Use current location")) {
+        if (city != null && !city.equals(useCurrentLocation)) {
             if (city.equals("Zagreb")) {
                 selectedLocation = new LatLng(45.8150, 15.9819);
                 selectedCity = "Zagreb";
@@ -88,7 +92,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
             }
         } else {
             selectedLocation = new LatLng(latitude, longitude);
-            selectedCity = "Current Location";
+            selectedCity = useCurrentLocation;
         }
 
         // Set item click listener for ListView
@@ -123,20 +127,31 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                             Log.d(TAG, "Challenge Title: " + challengeTitle);
                             Log.d(TAG, "Challenge Description: " + challengeDescription);
 
-                            // Fetch place location
-                            fetchPlaceLocation(placeName, placeLocation -> {
-                                Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
-                                intent.putExtra("challengeTitle", challengeTitle);
-                                intent.putExtra("learningLanguage", learningLanguage);
-                                intent.putExtra("nativeLanguage", nativeLanguage);
-                                intent.putExtra("challengeDescription", challengeDescription);
-                                intent.putExtra("category", finalCategory);
-                                intent.putExtra("latitude", selectedLocation.latitude);
-                                intent.putExtra("longitude", selectedLocation.longitude);
-                                intent.putExtra("placeLat", placeLocation.latitude); // Use the correct place latitude
-                                intent.putExtra("placeLng", placeLocation.longitude); // Use the correct place longitude
-                                intent.putExtra("placeName", placeName); // Pass place name
-                                startActivity(intent);
+                            // Translate challenge title and description
+                            TranslationUtil.translateText(challengeTitle, nativeLanguage, new TranslationUtil.TranslationCallback() {
+                                @Override
+                                public void onTranslationCompleted(String translatedTitle) {
+                                    TranslationUtil.translateText(challengeDescription, nativeLanguage, new TranslationUtil.TranslationCallback() {
+                                        @Override
+                                        public void onTranslationCompleted(String translatedDescription) {
+                                            // Fetch place location
+                                            fetchPlaceLocation(placeName, placeLocation -> {
+                                                Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
+                                                intent.putExtra("challengeTitle", translatedTitle);
+                                                intent.putExtra("learningLanguage", learningLanguage);
+                                                intent.putExtra("nativeLanguage", nativeLanguage);
+                                                intent.putExtra("challengeDescription", translatedDescription);
+                                                intent.putExtra("category", finalCategory);
+                                                intent.putExtra("latitude", selectedLocation.latitude);
+                                                intent.putExtra("longitude", selectedLocation.longitude);
+                                                intent.putExtra("placeLat", placeLocation.latitude);
+                                                intent.putExtra("placeLng", placeLocation.longitude);
+                                                intent.putExtra("placeName", placeName);
+                                                startActivity(intent);
+                                            });
+                                        }
+                                    });
+                                }
                             });
                         } else {
                             Log.e(TAG, "No challenges found for category: " + finalCategory);

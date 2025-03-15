@@ -2,12 +2,12 @@
 package ba.sum.fsre.hackaton.utils;
 
 import android.os.AsyncTask;
+import android.text.Html;
 import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -55,7 +55,11 @@ public class TranslationUtil {
 
             @Override
             protected void onPostExecute(String translatedText) {
-                callback.onTranslationCompleted(translatedText);
+                if (callback != null) {
+                    // Decode HTML entities
+                    String decodedText = Html.fromHtml(translatedText).toString();
+                    callback.onTranslationCompleted(decodedText);
+                }
             }
         }.execute();
     }

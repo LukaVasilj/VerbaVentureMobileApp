@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setCheckBoxTextWithLinks() {
-        String text = "I agree to the Terms and Conditions and Privacy Policy";
+        String text = getString(R.string.terms_and_conditions);
         SpannableString spannableString = new SpannableString(text);
 
         ClickableSpan termsSpan = new ClickableSpan() {
@@ -103,13 +103,20 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
-        int termsStart = text.indexOf("Terms and Conditions");
-        int termsEnd = termsStart + "Terms and Conditions".length();
-        int privacyStart = text.indexOf("Privacy Policy");
-        int privacyEnd = privacyStart + "Privacy Policy".length();
+        String termsText = getString(R.string.terms_text); // "Uvjeti korištenja" in Croatian
+        String privacyText = getString(R.string.privacy_text); // "Politika privatnosti" in Croatian
 
-        spannableString.setSpan(termsSpan, termsStart, termsEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(privacySpan, privacyStart, privacyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int termsStart = text.indexOf(termsText);
+        int termsEnd = termsStart + termsText.length();
+        int privacyStart = text.indexOf(privacyText);
+        int privacyEnd = privacyStart + privacyText.length();
+
+        if (termsStart != -1) {
+            spannableString.setSpan(termsSpan, termsStart, termsEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        if (privacyStart != -1) {
+            spannableString.setSpan(privacySpan, privacyStart, privacyEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
         termsCheckBox.setText(spannableString);
         termsCheckBox.setMovementMethod(LinkMovementMethod.getInstance());
@@ -122,35 +129,35 @@ public class RegisterActivity extends AppCompatActivity {
         String username = usernameField.getText().toString().trim();
 
         if (!isValidEmail(email)) {
-            emailLayout.setError("Invalid email address");
+            emailLayout.setError(getString(R.string.invalid_email));
             return;
         } else {
             emailLayout.setError(null);
         }
 
         if (!isValidPassword(password)) {
-            passwordLayout.setError("Password must be at least 8 characters, include an uppercase letter, a number, and a special character");
+            passwordLayout.setError(getString(R.string.invalid_password));
             return;
         } else {
             passwordLayout.setError(null);
         }
 
         if (!password.equals(confirmPassword)) {
-            confirmPasswordLayout.setError("Passwords do not match");
+            confirmPasswordLayout.setError(getString(R.string.passwords_do_not_match));
             return;
         } else {
             confirmPasswordLayout.setError(null);
         }
 
         if (TextUtils.isEmpty(username)) {
-            usernameLayout.setError("Please enter a username");
+            usernameLayout.setError(getString(R.string.please_enter_username));
             return;
         } else {
             usernameLayout.setError(null);
         }
 
         if (!termsCheckBox.isChecked()) {
-            Toast.makeText(this, "You must agree to the terms and conditions", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.agree_terms_conditions), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -177,18 +184,18 @@ public class RegisterActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Verification email sent", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, getString(R.string.verification_email_sent), Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(RegisterActivity.this, VerifyEmailActivity.class);
                                                     startActivity(intent);
                                                     finish();
                                                 } else {
-                                                    Toast.makeText(RegisterActivity.this, "Failed to send verification email", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, getString(R.string.failed_to_send_verification_email), Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
                             }
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, getString(R.string.registration_failed, task.getException().getMessage()), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

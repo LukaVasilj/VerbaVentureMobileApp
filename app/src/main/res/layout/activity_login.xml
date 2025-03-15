@@ -18,10 +18,10 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
             android:importantForAccessibility="yes"
-            android:contentDescription="Email field"
+            android:contentDescription="@string/email_hint"
             android:minHeight="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,10 +37,10 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:importantForAccessibility="yes"
-            android:contentDescription="Password field"
+            android:contentDescription="@string/password_hint"
             android:minHeight="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,16 +50,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Login"
+        android:text="@string/login"
         android:importantForAccessibility="yes"
-        android:contentDescription="Login button" />
+        android:contentDescription="@string/login" />
 
     <!-- Google Sign-In Button -->
     <Button
         android:id="@+id/googleSignInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign in with Google"
+        android:text="@string/sign_in_with_google"
         android:importantForAccessibility="yes" />
 
     <!-- Forgot password -->
@@ -67,7 +67,7 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot your password?"
+        android:text="@string/forgot_password"
         android:textColor="@android:color/holo_blue_dark"
         android:layout_gravity="center"
         android:padding="16dp"
@@ -79,7 +79,7 @@
         android:id="@+id/signupLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign up"
+        android:text="@string/sign_up"
         android:textColor="@android:color/holo_blue_dark"
         android:layout_gravity="center"
         android:padding="16dp"
@@ -91,7 +91,7 @@
         android:id="@+id/errorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invalid email or password"
+        android:text="@string/invalid_credentials"
         android:textColor="@android:color/holo_red_light"
         android:visibility="gone"
         android:layout_gravity="center"

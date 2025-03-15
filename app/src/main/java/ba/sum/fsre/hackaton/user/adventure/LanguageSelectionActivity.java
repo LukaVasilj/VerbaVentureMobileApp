@@ -3,6 +3,7 @@ package ba.sum.fsre.hackaton.user.adventure;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -20,24 +21,31 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import ba.sum.fsre.hackaton.R;
 
 public class LanguageSelectionActivity extends AppCompatActivity {
 
-    private Spinner nativeLanguageSpinner;
     private Spinner learningLanguageSpinner;
     private Spinner citySpinner;
     private Button startAdventureButton;
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private String nativeLanguageCode;
 
     private static final Map<String, String> LANGUAGE_MAP = new HashMap<>();
     static {
         LANGUAGE_MAP.put("Engleski", "en");
         LANGUAGE_MAP.put("Španjolski", "es");
-        LANGUAGE_MAP.put("Njemački", "de");
+        LANGUAGE_MAP.put("Hrvatski", "hr");
+        LANGUAGE_MAP.put("Inglés", "en");
+        LANGUAGE_MAP.put("Español", "es");
+        LANGUAGE_MAP.put("Croata", "hr");
+        LANGUAGE_MAP.put("English", "en");
+        LANGUAGE_MAP.put("Spanish", "es");
+        LANGUAGE_MAP.put("Croatian", "hr");
         // Add other languages as needed
     }
 
@@ -46,18 +54,16 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_selection);
 
-        nativeLanguageSpinner = findViewById(R.id.nativeLanguageSpinner);
+        // Load the saved native language from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("Settings", MODE_PRIVATE);
+        nativeLanguageCode = prefs.getString("My_Lang", "en");
+
         learningLanguageSpinner = findViewById(R.id.learningLanguageSpinner);
         citySpinner = findViewById(R.id.citySpinner);
         startAdventureButton = findViewById(R.id.startAdventureButton);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         // Set up the spinners
-        ArrayAdapter<CharSequence> nativeLanguageAdapter = ArrayAdapter.createFromResource(this,
-                R.array.native_language_array, android.R.layout.simple_spinner_item);
-        nativeLanguageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        nativeLanguageSpinner.setAdapter(nativeLanguageAdapter);
-
         ArrayAdapter<CharSequence> learningLanguageAdapter = ArrayAdapter.createFromResource(this,
                 R.array.learning_language_array, android.R.layout.simple_spinner_item);
         learningLanguageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,15 +78,16 @@ public class LanguageSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Get selected values
-                String nativeLanguage = nativeLanguageSpinner.getSelectedItem().toString();
                 String learningLanguage = learningLanguageSpinner.getSelectedItem().toString();
                 String city = citySpinner.getSelectedItem().toString();
 
-                // Map selected languages to ISO codes
-                String nativeLanguageCode = LANGUAGE_MAP.get(nativeLanguage);
+                // Map selected learning language to ISO code
                 String learningLanguageCode = LANGUAGE_MAP.get(learningLanguage);
 
-                if (city.equals("Use current location")) {
+                // Get the localized string for "Use current location"
+                String useCurrentLocation = getString(R.string.use_current_location);
+
+                if (city.equals(useCurrentLocation)) {
                     if (ContextCompat.checkSelfPermission(LanguageSelectionActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(LanguageSelectionActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
                     } else {
@@ -108,7 +115,7 @@ public class LanguageSelectionActivity extends AppCompatActivity {
                     Intent intent = new Intent(LanguageSelectionActivity.this, AdventureModeActivity.class);
                     intent.putExtra("nativeLanguage", nativeLanguageCode);
                     intent.putExtra("learningLanguage", learningLanguageCode);
-                    intent.putExtra("city", "Use current location");
+                    intent.putExtra("city", getString(R.string.use_current_location));
                     intent.putExtra("latitude", latitude);
                     intent.putExtra("longitude", longitude);
                     startActivity(intent);
@@ -124,9 +131,7 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                String nativeLanguage = nativeLanguageSpinner.getSelectedItem().toString();
                 String learningLanguage = learningLanguageSpinner.getSelectedItem().toString();
-                String nativeLanguageCode = LANGUAGE_MAP.get(nativeLanguage);
                 String learningLanguageCode = LANGUAGE_MAP.get(learningLanguage);
                 getCurrentLocation(nativeLanguageCode, learningLanguageCode);
             } else {

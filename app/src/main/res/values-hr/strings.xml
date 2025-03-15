@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hackaton</string>
+    <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
+    <string name="navigation_drawer_open">Otvori navigacijski izbornik</string>
+    <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
+    <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
+    <string name="select_language">Odaberite jezik</string>
+    <string name="change_language">Promijeni jezik</string>
+    <string name="start_adventure">Započni avanturu</string>
+    <string name="welcome_message">Dobrodošli, %1$s!</string>
+    <string name="points">Bodovi: %1$d</string>
+    <string name="level">Razina: %1$d</string>
+    <string name="badges">Značke: %1$d</string>
+    <string name="adventure_mode">Način Avanture</string>
+    <string name="home_learning_mode">Način Učenja Kod Kuće</string>
+    <string name="register">Registracija</string>
+    <string name="login">Prijava</string>
+    <string name="category">Categoría: %1$s</string>
+    <string name="distance">Distancia: %1$.2f metros</string>
+    <string name="start_challenge">Iniciar Desafío</string>
+    <string name="tts_play">Reproducir</string>
+    <!-- Login -->
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Lozinka</string>
+    <string name="sign_in_with_google">Prijavite se putem Google-a</string>
+    <string name="forgot_password">Zaboravili ste lozinku?</string>
+    <string name="sign_up">Nemate račun? Registrirajte se</string>
+    <string name="invalid_credentials">Nevažeći e-mail ili lozinka</string>
+    <string name="please_enter_email">Molimo unesite svoj e-mail</string>
+    <string name="please_enter_password">Molimo unesite svoju lozinku</string>
+    <string name="signing_in">Prijava...</string>
+    <string name="verify_email">Molimo potvrdite svoju e-mail adresu.</string>
+    <string name="authentication_failed">Autentifikacija nije uspjela.</string>
+    <string name="google_sign_in_failed">Google prijava nije uspjela: %1$d</string>
+    <string name="failed_to_fetch_user_role">Neuspješno dohvaćanje uloge korisnika.</string>
+    <string name="failed_to_save_user_data">Neuspješno spremanje podataka korisnika.</string>
+    <!-- Registracija -->
+    <string name="username_hint">Korisničko ime</string>
+    <string name="confirm_password_hint">Potvrdi lozinku</string>
+    <string name="terms_and_conditions">Slažem se s <u>Uvjeti korištenja</u> i <u>Politika privatnosti</u></string>    <string name="already_have_account">Već imate račun? Prijavite se ovdje</string>
+    <string name="invalid_email">Nevažeća e-mail adresa</string>
+    <string name="invalid_password">Lozinka mora imati najmanje 8 znakova, uključivati veliko slovo, broj i poseban znak</string>
+    <string name="passwords_do_not_match">Lozinke se ne podudaraju</string>
+    <string name="please_enter_username">Molimo unesite korisničko ime</string>
+    <string name="agree_terms_conditions">Morate se složiti s uvjetima korištenja</string>
+    <string name="verification_email_sent">Verifikacijski e-mail poslan</string>
+    <string name="failed_to_send_verification_email">Neuspješno slanje verifikacijskog e-maila</string>
+    <string name="registration_failed">Registracija nije uspjela: %1$s</string>
+    <string name="terms_text">Uvjeti korištenja</string>
+    <string name="privacy_text">Politika privatnosti</string>
+
+    <string name="use_current_location">Koristi trenutnu lokaciju</string>
+
+
+    <string-array name="native_language_array">
+        <item>Hrvatski</item>
+    </string-array>
+    <string-array name="learning_language_array">
+        <item>Engleski</item>
+        <item>Španjolski</item>
+    </string-array>
+    <string-array name="city_array">
+        <item>Zagreb</item>
+        <item>Pariz</item>
+        <item>Koristi trenutnu lokaciju</item>
+    </string-array>
+    <string-array name="languages_array">
+        <item>Engleski</item>
+        <item>Španjolski</item>
+        <item>Francuski</item>
+        <item>Hrvatski</item>
+    </string-array>
+</resources>

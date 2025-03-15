@@ -57,7 +57,7 @@ public class ChallengeDetailActivity extends AppCompatActivity {
         startChallengeButton = findViewById(R.id.startChallengeButton);
 
         placeNameTextView.setText(placeName);
-        categoryTextView.setText("Kategorija: " + category);
+        categoryTextView.setText(getString(R.string.category, category));
         titleTextView.setText(challengeTitle);
         descriptionTextView.setText(challengeDescription);
 
@@ -66,7 +66,7 @@ public class ChallengeDetailActivity extends AppCompatActivity {
         Location.distanceBetween(currentLat, currentLng, placeLat, placeLng, results);
         float distance = results[0];
         Log.d(TAG, "Calculated Distance: " + distance + " meters");
-        distanceTextView.setText("Distance: " + distance + " meters");
+        distanceTextView.setText(getString(R.string.distance, distance));
 
         // Enable or disable the start challenge button based on distance
         if (distance <= 15) {
@@ -109,26 +109,31 @@ public class ChallengeDetailActivity extends AppCompatActivity {
     }
 
     private void setTTSLanguage(String languageCode) {
-        switch (languageCode) {
-            case "en":
-                selectedLanguage = Locale.US;
-                break;
-            case "es":
-                selectedLanguage = new Locale("es", "ES");
-                break;
-            case "fr":
-                selectedLanguage = Locale.FRANCE;
-                break;
-            case "hr":
-                selectedLanguage = new Locale("hr", "HR");
-                break;
-            // Add more languages as needed
-            default:
-                selectedLanguage = Locale.US;
-                break;
+        if (languageCode != null) {
+            switch (languageCode) {
+                case "en":
+                    selectedLanguage = Locale.US;
+                    break;
+                case "es":
+                    selectedLanguage = new Locale("es", "ES");
+                    break;
+                case "fr":
+                    selectedLanguage = Locale.FRANCE;
+                    break;
+                case "hr":
+                    selectedLanguage = new Locale("hr", "HR");
+                    break;
+                // Add more languages as needed
+                default:
+                    selectedLanguage = Locale.US;
+                    break;
+            }
+            textToSpeech.setLanguage(selectedLanguage);
+            textToSpeech.setSpeechRate(0.75f); // Set slower speech rate if needed
+        } else {
+            // Handle the null case, e.g., set a default language or log an error
+            Log.e("ChallengeDetailActivity", "Language is null");
         }
-        textToSpeech.setLanguage(selectedLanguage);
-        textToSpeech.setSpeechRate(0.75f); // Set slower speech rate if needed
     }
 
     @Override

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hackaton</string>
+    <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
+    <string name="navigation_drawer_open">Abrir el menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
+    <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
+    <string name="select_language">Seleccionar idioma</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="start_adventure">Comenzar Aventura</string>
+    <string name="welcome_message">¡Bienvenido, %1$s!</string>
+    <string name="points">Puntos: %1$d</string>
+    <string name="level">Nivel: %1$d</string>
+    <string name="badges">Insignias: %1$d</string>
+    <string name="adventure_mode">Modo Aventura</string>
+    <string name="home_learning_mode">Modo de Aprendizaje en Casa</string>
+    <string name="category">Categoría: %1$s</string>
+    <string name="distance">Distancia: %1$.2f metros</string>
+    <string name="start_challenge">Iniciar Desafío</string>
+    <string name="tts_play">Reproducir</string>
+    <!-- Login -->
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="sign_in_with_google">Iniciar sesión con Google</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="sign_up">¿No tienes una cuenta? Regístrate</string>
+    <string name="invalid_credentials">Correo electrónico o contraseña inválidos</string>
+    <string name="please_enter_email">Por favor, introduce tu correo electrónico</string>
+    <string name="please_enter_password">Por favor, introduce tu contraseña</string>
+    <string name="signing_in">Iniciando sesión...</string>
+    <string name="verify_email">Por favor, verifica tu dirección de correo electrónico.</string>
+    <string name="authentication_failed">Autenticación fallida.</string>
+    <string name="google_sign_in_failed">Error de inicio de sesión con Google: %1$d</string>
+    <string name="failed_to_fetch_user_role">Error al obtener el rol del usuario.</string>
+    <string name="failed_to_save_user_data">Error al guardar los datos del usuario.</string>
+    <!-- Register -->
+    <string name="username_hint">Nombre de usuario</string>
+    <string name="confirm_password_hint">Confirmar contraseña</string>
+    <string name="terms_and_conditions">Acepto los <u>Términos y Condiciones</u> y la <u>Política de Privacidad</u></string>    <string name="already_have_account">¿Ya tienes una cuenta? Inicia sesión aquí</string>
+    <string name="invalid_email">Dirección de correo electrónico no válida</string>
+    <string name="invalid_password">La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, un número y un carácter especial</string>
+    <string name="passwords_do_not_match">Las contraseñas no coinciden</string>
+    <string name="please_enter_username">Por favor, introduce un nombre de usuario</string>
+    <string name="agree_terms_conditions">Debes aceptar los términos y condiciones</string>
+    <string name="verification_email_sent">Correo de verificación enviado</string>
+    <string name="failed_to_send_verification_email">Error al enviar el correo de verificación</string>
+    <string name="registration_failed">Registro fallido: %1$s</string>
+    <string name="terms_text">Términos y Condiciones</string>
+    <string name="privacy_text">Política de Privacidad</string>
+
+    <string name="use_current_location">Usar ubicación actual</string>
+
+
+    <string-array name="native_language_array">
+        <item>Croata</item>
+    </string-array>
+    <string-array name="learning_language_array">
+        <item>Inglés</item>
+        <item>Español</item>
+    </string-array>
+    <string-array name="city_array">
+        <item>Zagreb</item>
+        <item>París</item>
+        <item>Usar ubicación actual</item>
+    </string-array>
+    <string-array name="languages_array">
+        <item>Inglés</item>
+        <item>Español</item>
+        <item>Francés</item>
+        <item>Croata</item>
+    </string-array>
+</resources>
