@@ -63,6 +63,12 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         double latitude = getIntent().getDoubleExtra("latitude", 0.0);
         double longitude = getIntent().getDoubleExtra("longitude", 0.0);
 
+        if (nativeLanguage == null || learningLanguage == null || city == null) {
+            Log.e(TAG, "Missing intent extras");
+            finish();
+            return;
+        }
+
         // Initialize the Places API
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
 
@@ -112,6 +118,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
     private void fetchRandomChallenge(String category, String placeName, String learningLanguage, String nativeLanguage) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         final String finalCategory = category.toLowerCase();
+        Log.d(TAG, "Fetching challenges for category: " + finalCategory);
         db.collection("challenges").document(finalCategory).collection("challenges")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -121,38 +128,50 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                             Random random = new Random();
                             int randomIndex = random.nextInt(querySnapshot.size());
                             DocumentSnapshot document = querySnapshot.getDocuments().get(randomIndex);
-                            String challengeDescription = document.getString("challenge");
-                            String challengeTitle = document.getString("title");
+                            if (document.exists()) {
+                                String challengeDescription = document.getString("challenge");
+                                String challengeTitle = document.getString("title");
 
-                            Log.d(TAG, "Challenge Title: " + challengeTitle);
-                            Log.d(TAG, "Challenge Description: " + challengeDescription);
-
-                            // Translate challenge title and description
-                            TranslationUtil.translateText(challengeTitle, nativeLanguage, new TranslationUtil.TranslationCallback() {
-                                @Override
-                                public void onTranslationCompleted(String translatedTitle) {
-                                    TranslationUtil.translateText(challengeDescription, nativeLanguage, new TranslationUtil.TranslationCallback() {
-                                        @Override
-                                        public void onTranslationCompleted(String translatedDescription) {
-                                            // Fetch place location
-                                            fetchPlaceLocation(placeName, placeLocation -> {
-                                                Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
-                                                intent.putExtra("challengeTitle", translatedTitle);
-                                                intent.putExtra("learningLanguage", learningLanguage);
-                                                intent.putExtra("nativeLanguage", nativeLanguage);
-                                                intent.putExtra("challengeDescription", translatedDescription);
-                                                intent.putExtra("category", finalCategory);
-                                                intent.putExtra("latitude", selectedLocation.latitude);
-                                                intent.putExtra("longitude", selectedLocation.longitude);
-                                                intent.putExtra("placeLat", placeLocation.latitude);
-                                                intent.putExtra("placeLng", placeLocation.longitude);
-                                                intent.putExtra("placeName", placeName);
-                                                startActivity(intent);
-                                            });
-                                        }
-                                    });
+                                if (challengeTitle == null || challengeDescription == null) {
+                                    Log.e(TAG, "Challenge title or description is null");
+                                    return;
                                 }
-                            });
+
+                                Log.d(TAG, "Challenge Title: " + challengeTitle);
+                                Log.d(TAG, "Challenge Description: " + challengeDescription);
+
+                                // Translate challenge title and description
+                                TranslationUtil.translateText(challengeTitle, nativeLanguage, new TranslationUtil.TranslationCallback() {
+                                    @Override
+                                    public void onTranslationCompleted(String translatedTitle) {
+                                        Log.d(TAG, "Translated Title: " + translatedTitle);
+                                        TranslationUtil.translateText(challengeDescription, nativeLanguage, new TranslationUtil.TranslationCallback() {
+                                            @Override
+                                            public void onTranslationCompleted(String translatedDescription) {
+                                                Log.d(TAG, "Translated Description: " + translatedDescription);
+                                                // Fetch place location
+                                                fetchPlaceLocation(placeName, placeLocation -> {
+                                                    Log.d(TAG, "Place Location: " + placeLocation);
+                                                    Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
+                                                    intent.putExtra("challengeTitle", translatedTitle);
+                                                    intent.putExtra("learningLanguage", learningLanguage);
+                                                    intent.putExtra("nativeLanguage", nativeLanguage);
+                                                    intent.putExtra("challengeDescription", translatedDescription);
+                                                    intent.putExtra("category", finalCategory);
+                                                    intent.putExtra("latitude", selectedLocation.latitude);
+                                                    intent.putExtra("longitude", selectedLocation.longitude);
+                                                    intent.putExtra("placeLat", placeLocation.latitude);
+                                                    intent.putExtra("placeLng", placeLocation.longitude);
+                                                    intent.putExtra("placeName", placeName);
+                                                    startActivity(intent);
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            } else {
+                                Log.e(TAG, "Document does not exist");
+                            }
                         } else {
                             Log.e(TAG, "No challenges found for category: " + finalCategory);
                         }

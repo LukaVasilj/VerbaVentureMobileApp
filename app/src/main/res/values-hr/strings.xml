@@ -6,7 +6,8 @@
     <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
     <string name="select_language">Odaberite jezik</string>
-    <string name="change_language">Promijeni jezik</string>
+    <string name="change_language">Izaberi jezik</string>
+    <string name="confirm">Potvrdi</string>
     <string name="start_adventure">Započni avanturu</string>
     <string name="welcome_message">Dobrodošli, %1$s!</string>
     <string name="points">Bodovi: %1$d</string>
@@ -59,6 +60,7 @@
     <string-array name="learning_language_array">
         <item>Engleski</item>
         <item>Španjolski</item>
+        <item>Hrvatski</item>
     </string-array>
     <string-array name="city_array">
         <item>Zagreb</item>

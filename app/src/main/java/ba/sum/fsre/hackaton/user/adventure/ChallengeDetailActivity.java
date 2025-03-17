@@ -1,12 +1,14 @@
 // ChallengeDetailActivity.java
 package ba.sum.fsre.hackaton.user.adventure;
 
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import ba.sum.fsre.hackaton.R;
@@ -22,6 +24,7 @@ public class ChallengeDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadLocale(); // Add this line
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge_detail);
 
@@ -56,6 +59,7 @@ public class ChallengeDetailActivity extends AppCompatActivity {
         Button ttsButton = findViewById(R.id.ttsButton);
         startChallengeButton = findViewById(R.id.startChallengeButton);
 
+        Log.d(TAG, "Setting TextView values");
         placeNameTextView.setText(placeName);
         categoryTextView.setText(getString(R.string.category, category));
         titleTextView.setText(challengeTitle);
@@ -71,8 +75,10 @@ public class ChallengeDetailActivity extends AppCompatActivity {
         // Enable or disable the start challenge button based on distance
         if (distance <= 15) {
             startChallengeButton.setEnabled(true);
+            Log.d(TAG, "Start Challenge Button Enabled");
         } else {
             startChallengeButton.setEnabled(false);
+            Log.d(TAG, "Start Challenge Button Disabled");
         }
 
         // Initialize TextToSpeech
@@ -80,7 +86,10 @@ public class ChallengeDetailActivity extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS) {
+                    Log.d(TAG, "TextToSpeech initialized successfully");
                     setTTSLanguage(learningLanguage);
+                } else {
+                    Log.e(TAG, "TextToSpeech initialization failed with status: " + status);
                 }
             }
         });
@@ -90,7 +99,7 @@ public class ChallengeDetailActivity extends AppCompatActivity {
             @Override
             public void onTranslationCompleted(String translatedText) {
                 if (translatedText != null) {
-                    Log.d(TAG, "Translated text: " + translatedText);
+                    Log.d(TAG, "Translated Text: " + translatedText);
                     translatedTextView.setText(translatedText);
                 } else {
                     Log.e(TAG, "Translation failed");
@@ -103,13 +112,65 @@ public class ChallengeDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String textToSpeak = translatedTextView.getText().toString();
+                Log.d(TAG, "TTS Button clicked, speaking text: " + textToSpeak);
                 textToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
+
+        // Set the header image based on the category
+        ImageView headerImage = findViewById(R.id.headerImage);
+        switch (category.toLowerCase()) {
+            case "restaurant":
+                headerImage.setImageResource(R.drawable.restaurant);
+                Log.d(TAG, "Setting header image to restaurant");
+                break;
+            case "cafe":
+                headerImage.setImageResource(R.drawable.caffe);
+                Log.d(TAG, "Setting header image to cafe");
+                break;
+            case "museum":
+                headerImage.setImageResource(R.drawable.museum);
+                Log.d(TAG, "Setting header image to museum");
+                break;
+            case "pub":
+                headerImage.setImageResource(R.drawable.pub);
+                Log.d(TAG, "Setting header image to pub");
+                break;
+            default:
+                headerImage.setImageResource(R.drawable.restaurant); // Default image
+                Log.d(TAG, "Setting default header image");
+                break;
+        }
+    }
+
+    private void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "en");
+        setLocale(language);
+    }
+
+    private void setLocale(String language) {
+        Locale locale;
+        switch (language) {
+            case "Hrvatski":
+                locale = new Locale("hr");
+                break;
+            case "Español":
+                locale = new Locale("es");
+                break;
+            default:
+                locale = new Locale("en");
+                break;
+        }
+        Locale.setDefault(locale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(locale);
+        getApplicationContext().getResources().updateConfiguration(config, getApplicationContext().getResources().getDisplayMetrics());
     }
 
     private void setTTSLanguage(String languageCode) {
         if (languageCode != null) {
+            Log.d(TAG, "Setting TTS language: " + languageCode);
             switch (languageCode) {
                 case "en":
                     selectedLanguage = Locale.US;
@@ -123,7 +184,6 @@ public class ChallengeDetailActivity extends AppCompatActivity {
                 case "hr":
                     selectedLanguage = new Locale("hr", "HR");
                     break;
-                // Add more languages as needed
                 default:
                     selectedLanguage = Locale.US;
                     break;
@@ -131,14 +191,14 @@ public class ChallengeDetailActivity extends AppCompatActivity {
             textToSpeech.setLanguage(selectedLanguage);
             textToSpeech.setSpeechRate(0.75f); // Set slower speech rate if needed
         } else {
-            // Handle the null case, e.g., set a default language or log an error
-            Log.e("ChallengeDetailActivity", "Language is null");
+            Log.e(TAG, "Language code is null");
         }
     }
 
     @Override
     protected void onDestroy() {
         if (textToSpeech != null) {
+            Log.d(TAG, "Stopping and shutting down TextToSpeech");
             textToSpeech.stop();
             textToSpeech.shutdown();
         }

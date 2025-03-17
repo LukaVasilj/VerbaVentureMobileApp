@@ -2,7 +2,6 @@
 package ba.sum.fsre.hackaton.utils;
 
 import android.os.AsyncTask;
-import android.text.Html;
 import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,39 +15,49 @@ public class TranslationUtil {
     private static final String API_KEY = "AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo"; // Replace with your actual API key
     private static final String TAG = "TranslationUtil";
 
+    public interface TranslationCallback {
+        void onTranslationCompleted(String translatedText);
+    }
+
     public static void translateText(String text, String targetLanguage, TranslationCallback callback) {
+        if (text == null || text.isEmpty()) {
+            Log.e(TAG, "Text to translate is null or empty");
+            callback.onTranslationCompleted(null);
+            return;
+        }
+
+        if (targetLanguage == null || targetLanguage.isEmpty()) {
+            Log.e(TAG, "Target language is null or empty");
+            callback.onTranslationCompleted(null);
+            return;
+        }
+
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... voids) {
                 try {
-                    // URL with API key
-                    String apiUrl = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
-                            + "&q=" + URLEncoder.encode(text, "UTF-8")
-                            + "&target=" + targetLanguage;
+                    String encodedText = URLEncoder.encode(text, "UTF-8");
+                    String urlStr = String.format("https://translation.googleapis.com/language/translate/v2?key=%s&q=%s&target=%s", API_KEY, encodedText, targetLanguage);
+                    URL url = new URL(urlStr);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
 
-                    // Open connection
-                    URL url = new URL(apiUrl);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                    conn.setDoOutput(true);
-
-                    // Read response
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuilder response = new StringBuilder();
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        response.append(line);
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == 200) {
+                        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                        String inputLine;
+                        StringBuilder response = new StringBuilder();
+                        while ((inputLine = in.readLine()) != null) {
+                            response.append(inputLine);
+                        }
+                        in.close();
+                        return parseTranslatedText(response.toString());
+                    } else {
+                        Log.e(TAG, "Translation failed with response code: " + responseCode);
+                        return null;
                     }
-                    br.close();
-
-                    // Parse JSON response
-                    JSONObject jsonResponse = new JSONObject(response.toString());
-                    JSONArray translations = jsonResponse.getJSONObject("data").getJSONArray("translations");
-                    return translations.getJSONObject(0).getString("translatedText");
-
                 } catch (Exception e) {
-                    Log.e(TAG, "Translation failed", e);
+                    Log.e(TAG, "Exception during translation", e);
                     return null;
                 }
             }
@@ -56,15 +65,20 @@ public class TranslationUtil {
             @Override
             protected void onPostExecute(String translatedText) {
                 if (callback != null) {
-                    // Decode HTML entities
-                    String decodedText = Html.fromHtml(translatedText).toString();
-                    callback.onTranslationCompleted(decodedText);
+                    callback.onTranslationCompleted(translatedText);
                 }
             }
         }.execute();
     }
 
-    public interface TranslationCallback {
-        void onTranslationCompleted(String translatedText);
+    private static String parseTranslatedText(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray translations = jsonObject.getJSONObject("data").getJSONArray("translations");
+            return translations.getJSONObject(0).getString("translatedText");
+        } catch (Exception e) {
+            Log.e(TAG, "Error parsing translation response", e);
+            return null;
+        }
     }
 }

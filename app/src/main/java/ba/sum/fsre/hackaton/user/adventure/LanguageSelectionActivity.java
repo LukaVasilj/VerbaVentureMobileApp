@@ -87,6 +87,11 @@ public class LanguageSelectionActivity extends AppCompatActivity {
                 // Get the localized string for "Use current location"
                 String useCurrentLocation = getString(R.string.use_current_location);
 
+                if (learningLanguageCode == null || city == null) {
+                    Toast.makeText(LanguageSelectionActivity.this, "Please select valid options", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (city.equals(useCurrentLocation)) {
                     if (ContextCompat.checkSelfPermission(LanguageSelectionActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(LanguageSelectionActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);

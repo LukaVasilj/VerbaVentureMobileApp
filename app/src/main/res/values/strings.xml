@@ -5,7 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
     <string name="select_language">Select Language</string>
-    <string name="change_language">Change Language</string>
+    <string name="change_language">Choose Language</string>
+    <string name="confirm">Confirm</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="start_adventure">Start Adventure</string>
@@ -51,6 +52,11 @@
 
     <string name="use_current_location">Use current location</string>
 
+    <string name="category_icon">Category Icon</string>
+
+    <string name="select_city">Select City</string>
+
+
 
     <string-array name="native_language_array">
         <item>Croatian</item>
@@ -58,6 +64,8 @@
     <string-array name="learning_language_array">
         <item>English</item>
         <item>Spanish</item>
+        <item>Croatian</item>
+
     </string-array>
     <string-array name="city_array">
         <item>Zagreb</item>

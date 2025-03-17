@@ -2,12 +2,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"> <!-- Testna pozadina -->
+    android:background="@color/colorSplash"> <!-- Background color -->
 
     <ImageView
         android:id="@+id/splashImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@android:drawable/ic_menu_info_details" /> <!-- Testna slika -->
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logo" /> <!-- Logo in the center -->
+
+    <TextView
+        android:id="@+id/splashTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/splashImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Discover languages through adventure!"
+        android:textColor="@color/purple_200"
+        android:textSize="18sp" /> <!-- Text below the logo -->
+
+    <ProgressBar
+        android:id="@+id/loadingBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_below="@id/splashTextView"
+        android:layout_marginTop="26dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="@color/secondaryColor" />
 </RelativeLayout>

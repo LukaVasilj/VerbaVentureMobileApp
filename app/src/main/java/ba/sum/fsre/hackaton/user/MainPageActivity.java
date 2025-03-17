@@ -4,18 +4,26 @@ package ba.sum.fsre.hackaton.user;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,9 +31,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
+import java.util.HashMap;
 import java.util.Locale;
-
+import java.util.Map;
 import ba.sum.fsre.hackaton.MainActivity;
 import ba.sum.fsre.hackaton.R;
 import ba.sum.fsre.hackaton.user.adventure.LanguageSelectionActivity;
@@ -38,6 +46,9 @@ public class MainPageActivity extends AppCompatActivity {
     private TextView badgesTextView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    private String selectedLanguage;
+    private MenuItem languageMenuItem;
+    private Map<String, Integer> languageFlags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +127,12 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
+        // Initialize the language flags map
+        languageFlags = new HashMap<>();
+        languageFlags.put("English", R.drawable.flag_english);
+        languageFlags.put("Hrvatski", R.drawable.flag_croatian);
+        languageFlags.put("Español", R.drawable.flag_spanish);
+
         // Update the Adventure Mode button logic
         Button adventureModeButton = findViewById(R.id.adventureModeButton);
         adventureModeButton.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +147,9 @@ public class MainPageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        languageMenuItem = menu.findItem(R.id.action_change_language);
+        loadLocale(); // Ensure the locale is loaded before updating the icon
+        updateLanguageMenuItemIcon();
         return true;
     }
 
@@ -152,7 +172,7 @@ public class MainPageActivity extends AppCompatActivity {
                 setLocale(languages[which]);
                 saveLanguagePreference(languages[which]);
                 dialog.dismiss();
-                restartActivity(); // Restart activity to apply language change
+                recreate(); // Restart activity to apply language change
             }
         });
         builder.show();
@@ -173,15 +193,19 @@ public class MainPageActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void restartActivity() {
-        Intent intent = new Intent(this, MainPageActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
     private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "en");
         setLocale(language);
+        selectedLanguage = language; // Set the selected language
+    }
+
+    private void updateLanguageMenuItemIcon() {
+        if (languageMenuItem != null && selectedLanguage != null) {
+            Integer flagResId = languageFlags.get(selectedLanguage);
+            if (flagResId != null) {
+                languageMenuItem.setIcon(flagResId);
+            }
+        }
     }
 }

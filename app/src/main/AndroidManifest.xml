@@ -46,6 +46,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,9 +55,11 @@
         </activity>
         <activity
             android:name=".auth.LoginActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".auth.RegisterActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".auth.PasswordRecoveryActivity"
@@ -64,7 +67,8 @@
         <activity
             android:name=".user.MainPageActivity"
             android:theme="@style/AppTheme"
-            android:exported="true" />
+            android:exported="true"
+            android:label="VerbaVenture" />
         <activity
             android:name=".auth.VerifyEmailActivity"
             android:exported="true" />
@@ -73,12 +77,15 @@
             android:exported="true" />
         <activity
             android:name=".user.adventure.AdventureModeActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".user.adventure.LanguageSelectionActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".user.adventure.ChallengeDetailActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".user.SettingsActivity"
