@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
-    <string name="select_language">Select Language</string>
+    <string name="select_languagee">Select Language</string>
     <string name="change_language">Choose Language</string>
     <string name="confirm">Confirm</string>
     <string name="register">Register</string>
@@ -17,9 +17,9 @@
     <string name="adventure_mode">Adventure Mode</string>
     <string name="home_learning_mode">Home Learning Mode</string>
     <string name="category">Category: %1$s</string>
-    <string name="distance">Distance: %1$.2f meters</string>
+
     <string name="start_challenge">Start Challenge</string>
-    <string name="tts_play">Play</string>
+
     <!-- Login -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
@@ -51,23 +51,35 @@
     <string name="privacy_text">Privacy Policy</string>
 
     <string name="use_current_location">Use current location</string>
+    <string name="loading">Loading</string>
 
     <string name="category_icon">Category Icon</string>
 
     <string name="select_city">Select City</string>
 
+    <string name="select_language">-- Select Language --</string>
+    <string name="select_location">-- Select Location --</string>
+
+    <string name="challenge_title">Challenge title: %1$s</string>
+    <string name="challenge_description">Challenge: %1$s</string>
+    <string name="translated_challenge">Challenge: %1$s</string>
+    <string name="distance">Distance: %1$.2f meters</string>
+    <string name="tts_play">Listen</string>
+    <string name="current_language_icon">Current Language Icon</string>
 
 
     <string-array name="native_language_array">
         <item>Croatian</item>
     </string-array>
     <string-array name="learning_language_array">
+        <item>-- Select Language --</item>
         <item>English</item>
         <item>Spanish</item>
         <item>Croatian</item>
 
     </string-array>
     <string-array name="city_array">
+        <item>-- Select Location --</item>
         <item>Zagreb</item>
         <item>Paris</item>
         <item>Use current location</item>

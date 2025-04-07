@@ -8,12 +8,21 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.content.Context;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.AutocompletePrediction;
@@ -35,9 +44,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import android.view.View;
 import ba.sum.fsre.hackaton.utils.TranslationUtil;
-
 import ba.sum.fsre.hackaton.R;
 
 public class AdventureModeActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -48,7 +55,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
     private LatLng selectedLocation;
     private LatLng placeLocation; // Define placeLocation here
     private String selectedCity;
-    private ArrayAdapter<String> placesAdapter;
+    private PlacesAdapter placesAdapter;
     private List<String> placesList;
 
     @Override
@@ -72,10 +79,10 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         // Initialize the Places API
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
 
-        // Initialize ListView
+        // Initialize ListView with custom adapter
         placesListView = findViewById(R.id.placesListView);
         placesList = new ArrayList<>();
-        placesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, placesList);
+        placesAdapter = new PlacesAdapter(this, placesList);
         placesListView.setAdapter(placesAdapter);
 
         // Initialize SupportMapFragment
@@ -230,10 +237,24 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         }
     }
 
+
     @Override
     public void onMapReady(GoogleMap map) {
         googleMap = map;
         updateMapAndPlaces(selectedLocation, selectedCity);
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String markerTitle = marker.getTitle();
+                int position = placesList.indexOf(markerTitle);
+                if (position != -1) {
+                    placesListView.smoothScrollToPosition(position);
+                    placesAdapter.setSelectedPosition(position); // Set the selected position
+                }
+                return false;
+            }
+        });
     }
 
     private void updateMapAndPlaces(LatLng location, String city) {
@@ -293,6 +314,68 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                 placesList.add(markerOptions.getTitle());
             }
             placesAdapter.notifyDataSetChanged();
+        }
+    }
+
+    // Custom adapter for ListView
+    private class PlacesAdapter extends ArrayAdapter<String> {
+        private Context context;
+        private List<String> places;
+        private int selectedPosition = -1; // Track the selected position
+
+        public PlacesAdapter(Context context, List<String> places) {
+            super(context, R.layout.item_place, places);
+            this.context = context;
+            this.places = places;
+        }
+
+        public void setSelectedPosition(int position) {
+            selectedPosition = position;
+            notifyDataSetChanged(); // Notify the adapter to refresh the views
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(context).inflate(R.layout.item_place, parent, false);
+            }
+
+            ImageView placeIcon = convertView.findViewById(R.id.placeIcon);
+            TextView placeName = convertView.findViewById(R.id.placeName);
+
+            String place = places.get(position);
+            placeName.setText(place);
+
+            // Set icon based on category
+            String category = getCategoryForPlace(place);
+            switch (category) {
+                case "Restaurant":
+                    placeIcon.setImageResource(R.drawable.restaurant_icon);
+                    break;
+                case "Caffe bar":
+                    placeIcon.setImageResource(R.drawable.caffe_icon);
+                    break;
+                case "Pub":
+                    placeIcon.setImageResource(R.drawable.pub_icon);
+                    break;
+                case "Museum":
+                    placeIcon.setImageResource(R.drawable.museum_icon);
+                    break;
+                // Add more cases for other categories
+                default:
+                    placeIcon.setImageResource(R.drawable.default_icon);
+                    break;
+            }
+
+            // Change background color if this item is selected
+            if (position == selectedPosition) {
+                convertView.setBackgroundColor(context.getResources().getColor(R.color.selected_item_background));
+            } else {
+                convertView.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
+            }
+
+            return convertView;
         }
     }
 }

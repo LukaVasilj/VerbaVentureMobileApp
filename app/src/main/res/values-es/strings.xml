@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Abrir el menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
-    <string name="select_language">Seleccionar idioma</string>
+    <string name="select_languagee">Seleccionar idioma</string>
     <string name="change_language">Cambiar idioma</string>
     <string name="confirm">Confirmar</string>
     <string name="register">Registrarse</string>
@@ -18,7 +18,7 @@
     <string name="adventure_mode">Modo Aventura</string>
     <string name="home_learning_mode">Modo de Aprendizaje en Casa</string>
     <string name="category">Categoría: %1$s</string>
-    <string name="distance">Distancia: %1$.2f metros</string>
+
     <string name="start_challenge">Iniciar Desafío</string>
     <string name="tts_play">Reproducir</string>
     <!-- Login -->
@@ -53,16 +53,27 @@
 
     <string name="use_current_location">Usar ubicación actual</string>
 
+    <string name="select_language">-- Seleccionar Idioma --</string>
+    <string name="select_location">-- Seleccionar Ubicación --</string>
+
+    <string name="challenge_title">Título del desafío: %1$s</string>
+    <string name="challenge_description">Desafío: %1$s</string>
+    <string name="translated_challenge">Desafío: %1$s</string>
+    <string name="distance">Distancia: %1$.2f metros</string>
+
+
 
     <string-array name="native_language_array">
         <item>Croata</item>
     </string-array>
     <string-array name="learning_language_array">
+        <item>-- Seleccionar Idioma --</item>
         <item>Inglés</item>
         <item>Español</item>
         <item>Croata</item>
     </string-array>
     <string-array name="city_array">
+        <item>-- Seleccionar Ubicación --</item>
         <item>Zagreb</item>
         <item>París</item>
         <item>Usar ubicación actual</item>

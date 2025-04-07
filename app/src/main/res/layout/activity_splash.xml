@@ -29,11 +29,13 @@
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:layout_below="@id/splashTextView"
-        android:layout_marginTop="26dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="26dp"
         android:layout_marginRight="32dp"
         android:indeterminate="false"
         android:max="100"
+        android:maxHeight="16dip"
+        android:minHeight="16dip"
         android:progress="0"
         android:progressTint="@color/secondaryColor" />
 </RelativeLayout>

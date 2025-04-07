@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Otvori navigacijski izbornik</string>
     <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
-    <string name="select_language">Odaberite jezik</string>
+    <string name="select_languagee">Odaberite jezik</string>
     <string name="change_language">Izaberi jezik</string>
     <string name="confirm">Potvrdi</string>
     <string name="start_adventure">Započni avanturu</string>
@@ -18,9 +18,9 @@
     <string name="register">Registracija</string>
     <string name="login">Prijava</string>
     <string name="category">Categoría: %1$s</string>
-    <string name="distance">Distancia: %1$.2f metros</string>
+
     <string name="start_challenge">Iniciar Desafío</string>
-    <string name="tts_play">Reproducir</string>
+    <string name="tts_play">Poslušaj</string>
     <!-- Login -->
     <string name="email_hint">E-mail</string>
     <string name="password_hint">Lozinka</string>
@@ -53,16 +53,26 @@
 
     <string name="use_current_location">Koristi trenutnu lokaciju</string>
 
+    <string name="select_language">-- Odaberite Jezik --</string>
+    <string name="select_location">-- Odaberite Lokaciju --</string>
+
+    <string name="challenge_title">Naslov izazova: %1$s</string>
+    <string name="challenge_description">Izazov: %1$s</string>
+    <string name="translated_challenge">Izazov: %1$s</string>
+    <string name="distance">Udaljenost: %1$.2f metara</string>
+
 
     <string-array name="native_language_array">
         <item>Hrvatski</item>
     </string-array>
     <string-array name="learning_language_array">
+        <item>-- Odaberite Jezik --</item>
         <item>Engleski</item>
         <item>Španjolski</item>
         <item>Hrvatski</item>
     </string-array>
     <string-array name="city_array">
+        <item>-- Odaberite Lokaciju --</item>
         <item>Zagreb</item>
         <item>Pariz</item>
         <item>Koristi trenutnu lokaciju</item>

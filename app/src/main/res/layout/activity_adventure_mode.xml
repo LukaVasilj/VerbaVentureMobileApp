@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    android:background="@color/cardBackground"
     tools:context=".user.adventure.AdventureModeActivity">
 
     <!-- Karta unutar CardView -->
@@ -24,17 +24,24 @@
     </androidx.cardview.widget.CardView>
 
     <!-- Lista mjesta (uređena sa stilizacijom) -->
-    <ListView
-        android:id="@+id/placesListView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/mapCardView"
         android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:divider="@drawable/divider"
-        android:dividerHeight="1dp"
-        android:background="#FFFFFF"
-        android:elevation="4dp" />
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@color/white">
+
+        <ListView
+            android:id="@+id/placesListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:divider="@drawable/divider"
+            android:dividerHeight="1dp"
+            android:background="@android:color/transparent" />
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

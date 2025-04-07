@@ -129,9 +129,9 @@ public class MainPageActivity extends AppCompatActivity {
 
         // Initialize the language flags map
         languageFlags = new HashMap<>();
-        languageFlags.put("English", R.drawable.flag_english);
-        languageFlags.put("Hrvatski", R.drawable.flag_croatian);
-        languageFlags.put("Español", R.drawable.flag_spanish);
+        languageFlags.put("en", R.drawable.flag_english);
+        languageFlags.put("hr", R.drawable.flag_croatian);
+        languageFlags.put("es", R.drawable.flag_spanish);
 
         // Update the Adventure Mode button logic
         Button adventureModeButton = findViewById(R.id.adventureModeButton);
@@ -163,26 +163,72 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     private void showLanguageSelectionDialog() {
-        final String[] languages = {"en", "hr", "es"};
+        final String[] languages = {"English", "Hrvatski", "Español"};
+        final String[] languageCodes = {"en", "hr", "es"};
+        final int[] flags = {R.drawable.flag_english, R.drawable.flag_croatian, R.drawable.flag_spanish};
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.select_language);
-        builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_language_selection, null);
+        builder.setView(dialogView);
+
+        ListView languageListView = dialogView.findViewById(R.id.languageListView);
+        Button confirmButton = dialogView.findViewById(R.id.confirmButton);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, languages) {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                setLocale(languages[which]);
-                saveLanguagePreference(languages[which]);
-                dialog.dismiss();
-                recreate(); // Restart activity to apply language change
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = view.findViewById(android.R.id.text1);
+                Drawable drawable = getResources().getDrawable(flags[position]);
+                int iconSize = (int) (textView.getTextSize() * 1.5); // Adjust the size as needed
+                drawable.setBounds(0, 0, iconSize, iconSize);
+                textView.setCompoundDrawables(drawable, null, null, null);
+                textView.setCompoundDrawablePadding(16);
+                return view;
+            }
+        };
+        languageListView.setAdapter(adapter);
+
+        final AlertDialog dialog = builder.create();
+
+        // Customize the dialog window attributes
+        Window window = dialog.getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(window.getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            window.setAttributes(layoutParams);
+        }
+
+        languageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedLanguage = languageCodes[position];
             }
         });
-        builder.show();
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedLanguage != null) {
+                    setLocale(selectedLanguage);
+                    saveLanguagePreference(selectedLanguage);
+                    dialog.dismiss();
+                    recreate(); // Restart activity to apply language change
+                }
+            }
+        });
+
+        dialog.show();
     }
 
     private void setLocale(String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         android.content.res.Configuration config = new android.content.res.Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 

@@ -15,4 +15,11 @@
     <color name="secondaryColor">#FF9A1F</color>
     <color name="colorSplash">#2D338C</color>
     <color name="lightGray">#E0E0E0</color>
+    <color name="disabledColor">#D3D3D3</color> <!-- Light gray for disabled background -->
+    <color name="disabledTextColor">#A9A9A9</color>
+    <color name="darkGray">#757575</color> <!-- Tamno siva za tekst -->
+    <color name="light_gray">#F5F5F5</color>
+    <color name="selected_item_background">#D3D3D3</color> <!-- Light gray for selected item background -->
+    <color name="pozadina">#E2FFDC</color>
+
 </resources>

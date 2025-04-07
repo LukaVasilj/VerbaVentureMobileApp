@@ -4,89 +4,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Gornja slika -->
-    <ImageView
-        android:id="@+id/headerImage"
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Kartica ispod slike -->
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
-        android:background="@android:color/white"
-        android:radius="20dp"
-        app:cardElevation="8dp"
-        app:layout_constraintTop_toBottomOf="@id/headerImage">
+        app:layout_constraintTop_toBottomOf="@id/mapFragment"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:radius="12dp"
+            app:cardElevation="6dp"
+            android:background="@android:color/white">
 
-            <TextView
-                android:id="@+id/placeNameTextView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/categoryTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:id="@+id/placeNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/challengeTitleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/pozadina"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="24dp">
 
-            <TextView
-                android:id="@+id/nativeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
+                    <TextView
+                        android:id="@+id/challengeTitleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:padding="8dp" />
+                </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/translatedTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:id="@+id/nativeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:gravity="start"
+                    android:layout_marginBottom="12dp"/>
 
-            <TextView
-                android:id="@+id/distanceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@string/distance" />
+                <TextView
+                    android:id="@+id/translatedTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/darkGray"
+                    android:textStyle="bold"
+                    android:gravity="start"
+                    android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/ttsButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:drawableTop="@android:drawable/ic_media_play"
-                android:backgroundTint="?attr/colorPrimary"
-                android:padding="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:contentDescription="@string/tts_play" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="16dp">
 
-            <Button
-                android:id="@+id/startChallengeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/start_challenge" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <ImageButton
+                        android:id="@+id/ttsButton"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?android:selectableItemBackgroundBorderless"
+                        android:src="@drawable/play"
+                        android:contentDescription="@string/tts_play"
+                        app:tint="@color/colorPrimary"
+                        android:layout_marginEnd="12dp"/>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/distanceTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:text="@string/distance"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

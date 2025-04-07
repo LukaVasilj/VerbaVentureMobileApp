@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -74,6 +75,34 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         citySpinner.setAdapter(cityAdapter);
 
+        // Disable the button initially
+        startAdventureButton.setEnabled(false);
+
+        // Add listeners to the spinners
+        learningLanguageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                checkSelections();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                checkSelections();
+            }
+        });
+
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                checkSelections();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                checkSelections();
+            }
+        });
+
         startAdventureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,25 +139,39 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         });
     }
 
+    private void checkSelections() {
+        String selectedLanguage = learningLanguageSpinner.getSelectedItem().toString();
+        String selectedCity = citySpinner.getSelectedItem().toString();
+
+        boolean isLanguageSelected = !selectedLanguage.equals(getString(R.string.select_language));
+        boolean isCitySelected = !selectedCity.equals(getString(R.string.select_location));
+
+        startAdventureButton.setEnabled(isLanguageSelected && isCitySelected);
+    }
+
     private void getCurrentLocation(String nativeLanguageCode, String learningLanguageCode) {
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    double latitude = location.getLatitude();
-                    double longitude = location.getLongitude();
-                    Intent intent = new Intent(LanguageSelectionActivity.this, AdventureModeActivity.class);
-                    intent.putExtra("nativeLanguage", nativeLanguageCode);
-                    intent.putExtra("learningLanguage", learningLanguageCode);
-                    intent.putExtra("city", getString(R.string.use_current_location));
-                    intent.putExtra("latitude", latitude);
-                    intent.putExtra("longitude", longitude);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(LanguageSelectionActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        double latitude = location.getLatitude();
+                        double longitude = location.getLongitude();
+                        Intent intent = new Intent(LanguageSelectionActivity.this, AdventureModeActivity.class);
+                        intent.putExtra("nativeLanguage", nativeLanguageCode);
+                        intent.putExtra("learningLanguage", learningLanguageCode);
+                        intent.putExtra("city", getString(R.string.use_current_location));
+                        intent.putExtra("latitude", latitude);
+                        intent.putExtra("longitude", longitude);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LanguageSelectionActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        }
     }
 
     @Override

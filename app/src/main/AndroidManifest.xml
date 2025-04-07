@@ -82,13 +82,16 @@
         <activity
             android:name=".user.adventure.LanguageSelectionActivity"
             android:theme="@style/AppTheme"
-            android:exported="true" />
+            android:exported="true"
+            android:label="VerbaVenture" />
         <activity
             android:name=".user.adventure.ChallengeDetailActivity"
             android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".user.SettingsActivity"
-            android:exported="true" />
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="Settings" />
     </application>
 </manifest>
