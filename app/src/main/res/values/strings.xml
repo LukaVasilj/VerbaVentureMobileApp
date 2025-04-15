@@ -11,7 +11,7 @@
     <string name="login">Login</string>
     <string name="start_adventure">Start Adventure</string>
     <string name="welcome_message">Welcome, %1$s!</string>
-    <string name="points">Points: %1$d</string>
+    <string name="points">Points: %1$d / %2$d</string>
     <string name="level">Level: %1$d</string>
     <string name="badges">Badges: %1$d</string>
     <string name="adventure_mode">Adventure Mode</string>
@@ -66,8 +66,10 @@
     <string name="distance">Distance: %1$.2f meters</string>
     <string name="tts_play">Listen</string>
     <string name="current_language_icon">Current Language Icon</string>
+    <string name="challenge_points">Vrijednost poena: %1$d</string>
+    <string name="points_not_available">Poeni nisu dostupni</string>
 
-
+    <string name="speech_recognition">Speech Recognition</string>
     <string-array name="native_language_array">
         <item>Croatian</item>
     </string-array>

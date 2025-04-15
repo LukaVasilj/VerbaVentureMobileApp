@@ -138,27 +138,25 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                             if (document.exists()) {
                                 String challengeDescription = document.getString("challenge");
                                 String challengeTitle = document.getString("title");
+                                Long points = document.getLong("points"); // Fetch points
 
-                                if (challengeTitle == null || challengeDescription == null) {
-                                    Log.e(TAG, "Challenge title or description is null");
+                                if (challengeTitle == null || challengeDescription == null || points == null) {
+                                    Log.e(TAG, "Challenge title, description, or points is null");
                                     return;
                                 }
 
                                 Log.d(TAG, "Challenge Title: " + challengeTitle);
                                 Log.d(TAG, "Challenge Description: " + challengeDescription);
+                                Log.d(TAG, "Challenge Points: " + points);
 
                                 // Translate challenge title and description
                                 TranslationUtil.translateText(challengeTitle, nativeLanguage, new TranslationUtil.TranslationCallback() {
                                     @Override
                                     public void onTranslationCompleted(String translatedTitle) {
-                                        Log.d(TAG, "Translated Title: " + translatedTitle);
                                         TranslationUtil.translateText(challengeDescription, nativeLanguage, new TranslationUtil.TranslationCallback() {
                                             @Override
                                             public void onTranslationCompleted(String translatedDescription) {
-                                                Log.d(TAG, "Translated Description: " + translatedDescription);
-                                                // Fetch place location
                                                 fetchPlaceLocation(placeName, placeLocation -> {
-                                                    Log.d(TAG, "Place Location: " + placeLocation);
                                                     Intent intent = new Intent(AdventureModeActivity.this, ChallengeDetailActivity.class);
                                                     intent.putExtra("challengeTitle", translatedTitle);
                                                     intent.putExtra("learningLanguage", learningLanguage);
@@ -170,6 +168,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                                                     intent.putExtra("placeLat", placeLocation.latitude);
                                                     intent.putExtra("placeLng", placeLocation.longitude);
                                                     intent.putExtra("placeName", placeName);
+                                                    intent.putExtra("points", points); // Pass points
                                                     startActivity(intent);
                                                 });
                                             }

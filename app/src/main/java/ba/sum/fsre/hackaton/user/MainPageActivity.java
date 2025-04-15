@@ -1,4 +1,3 @@
-// MainPageActivity.java
 package ba.sum.fsre.hackaton.user;
 
 import android.content.DialogInterface;
@@ -18,12 +17,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,9 +33,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 import ba.sum.fsre.hackaton.MainActivity;
 import ba.sum.fsre.hackaton.R;
 import ba.sum.fsre.hackaton.user.adventure.LanguageSelectionActivity;
@@ -75,12 +79,21 @@ public class MainPageActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
+                                    // Fetch and display username
                                     String username = document.getString("username");
                                     if (username != null) {
                                         String welcomeMessage = getString(R.string.welcome_message, username);
                                         welcomeTextView.setText(welcomeMessage);
                                     }
+
+                                    // Fetch and update points and level
+                                    Long points = document.getLong("points");
+                                    if (points != null) {
+                                        updateLevelAndPoints(points);
+                                    }
                                 }
+                            } else {
+                                Toast.makeText(MainPageActivity.this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -144,11 +157,67 @@ public class MainPageActivity extends AppCompatActivity {
         });
     }
 
+    private void updateLevelAndPoints(long points) {
+        final int[] currentLevel = {1}; // Initial level
+        final long[] pointsForNextLevel = {100}; // Points required for level 2
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("users").document(user.getUid()).get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    final Long[] currentPoints = {document.getLong("points")};
+                                    if (currentPoints[0] != null) {
+                                        currentLevel[0] = document.getLong("level") != null ? document.getLong("level").intValue() : 1;
+
+                                        // Calculate points required for the next level
+                                        pointsForNextLevel[0] = currentLevel[0] * 100;
+
+                                        // Check if the user has enough points to level up
+                                        if (currentPoints[0] >= pointsForNextLevel[0]) {
+                                            currentPoints[0] -= pointsForNextLevel[0]; // Deduct points for leveling up
+                                            currentLevel[0]++; // Increment level
+                                            pointsForNextLevel[0] = currentLevel[0] * 100; // Update points for the next level
+                                        }
+
+                                        // Update Firestore with the new level and points
+                                        Map<String, Object> updates = new HashMap<>();
+                                        updates.put("level", currentLevel[0]);
+                                        updates.put("points", currentPoints[0]);
+
+                                        db.collection("users").document(user.getUid()).update(updates)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            // Update UI
+                                                            levelTextView.setText(getString(R.string.level, currentLevel[0]));
+                                                            pointsTextView.setText(getString(R.string.points, currentPoints[0], pointsForNextLevel[0]));
+                                                        } else {
+                                                            Toast.makeText(MainPageActivity.this, "Failed to update level and points.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(MainPageActivity.this, "Failed to fetch user data.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         languageMenuItem = menu.findItem(R.id.action_change_language);
-        loadLocale(); // Ensure the locale is loaded before updating the icon
+        loadLocale();
         updateLanguageMenuItemIcon();
         return true;
     }

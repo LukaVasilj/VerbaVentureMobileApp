@@ -6,10 +6,28 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/instructionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to the Admin Page"
         android:textSize="18sp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:text="Instruction Text" />
+
+    <Button
+        android:id="@+id/startSpeechButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Speech Recognition"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:text="Result Text" />
 
 </LinearLayout>

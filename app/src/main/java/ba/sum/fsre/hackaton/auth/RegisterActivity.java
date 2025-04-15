@@ -177,6 +177,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 userData.put("email", sanitizedEmail);
                                 userData.put("username", sanitizedUsername);
                                 userData.put("role", UserRole.USER.name());
+                                userData.put("points", 0); // Add default points field
+                                userData.put("level", 1); // Add default level field
+
                                 db.collection("users").document(user.getUid()).set(userData);
 
                                 user.sendEmailVerification()

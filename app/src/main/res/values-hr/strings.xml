@@ -60,6 +60,10 @@
     <string name="challenge_description">Izazov: %1$s</string>
     <string name="translated_challenge">Izazov: %1$s</string>
     <string name="distance">Udaljenost: %1$.2f metara</string>
+    <string name="speech_recognition">Speech Recognition</string>
+    <string name="current_language_icon">Current Language Icon</string>
+    <string name="challenge_points">Vrijednost poena: %1$d</string>
+    <string name="points_not_available">Poeni nisu dostupni</string>
 
 
     <string-array name="native_language_array">

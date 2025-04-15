@@ -60,8 +60,10 @@
     <string name="challenge_description">Desafío: %1$s</string>
     <string name="translated_challenge">Desafío: %1$s</string>
     <string name="distance">Distancia: %1$.2f metros</string>
-
-
+    <string name="speech_recognition">Speech Recognition</string>
+    <string name="current_language_icon">Current Language Icon</string>
+    <string name="challenge_points">Vrijednost poena: %1$d</string>
+    <string name="points_not_available">Poeni nisu dostupni</string>
 
     <string-array name="native_language_array">
         <item>Croata</item>
