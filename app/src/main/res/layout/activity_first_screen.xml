@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iphone_13_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F4F9">
+
+    <View
+        android:id="@+id/translateLogo"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/translate_logo" />
+
+    <TextView
+        android:id="@+id/verbaventure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center_vertical"
+        android:text="@string/verbaventure"
+        android:textAppearance="@style/verbaventure"
+        android:fontFamily="@font/sf_pro_display_medium" />
+
+    <TextView
+        android:id="@+id/explore_the"
+        android:layout_width="324dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="462dp"
+        android:text="@string/explore_the"
+        android:textAppearance="@style/explore_the"
+        android:gravity="center_vertical"
+        android:fontFamily="@font/sf_pro_display_medium" />
+
+    <View
+        android:id="@+id/frame"
+        android:layout_width="358dp"
+        android:layout_height="358dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/start_picture" />
+
+    <!-- Start learning Button -->
+    <Button
+        android:id="@+id/startLearningButton"
+        android:layout_width="326dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="562dp"
+        android:background="@drawable/start_learning_button"
+        android:text="@string/start_learning"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_pro_display_medium" />
+
+    <TextView
+        android:id="@+id/already_have"
+        android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="628dp"
+        android:gravity="center_horizontal|top"
+        android:lineSpacingExtra="1sp"
+        android:text="@string/already_have"
+        android:textAppearance="@style/already_have"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:translationY="-0.32sp" />
+    <!--
+      Font family: SF Pro Display
+      Line height: 20sp
+      (identical to box height)
+      translationY compensates for the line height adjustment of text
+      -->
+
+</RelativeLayout>

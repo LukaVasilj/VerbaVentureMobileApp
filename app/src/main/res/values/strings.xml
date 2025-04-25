@@ -1,4 +1,16 @@
 <resources>
+
+    <!-- layout/activity_first_screen.xml -->
+    <string name="verbaventure" translatable="false">VerbaVenture</string>
+    <string name="explore_the" translatable="false">
+        Explore the world one word at a time
+    </string>
+    <string name="start_learning" translatable="false">Start learning</string>
+    <string name="already_have" translatable="false">
+        Already have an account? Log in
+    </string>
+    <!-- END -->
+
     <string name="app_name">Hackaton</string>
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -70,6 +82,7 @@
     <string name="points_not_available">Poeni nisu dostupni</string>
 
     <string name="speech_recognition">Speech Recognition</string>
+
     <string-array name="native_language_array">
         <item>Croatian</item>
     </string-array>

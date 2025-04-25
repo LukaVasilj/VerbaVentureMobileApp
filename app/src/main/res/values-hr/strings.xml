@@ -17,7 +17,7 @@
     <string name="home_learning_mode">Način Učenja Kod Kuće</string>
     <string name="register">Registracija</string>
     <string name="login">Prijava</string>
-    <string name="category">Categoría: %1$s</string>
+    <string name="category">Kategorija: %1$s</string>
 
     <string name="start_challenge">Iniciar Desafío</string>
     <string name="tts_play">Poslušaj</string>
