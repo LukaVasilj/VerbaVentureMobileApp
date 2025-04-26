@@ -24,8 +24,7 @@
         android:layout_marginTop="48dp"
         android:gravity="center_vertical"
         android:text="@string/verbaventure"
-        android:textAppearance="@style/verbaventure"
-        android:fontFamily="@font/sf_pro_display_medium" />
+        android:textAppearance="@style/verbaventure" />
 
     <TextView
         android:id="@+id/explore_the"
@@ -35,8 +34,7 @@
         android:layout_marginTop="462dp"
         android:text="@string/explore_the"
         android:textAppearance="@style/explore_the"
-        android:gravity="center_vertical"
-        android:fontFamily="@font/sf_pro_display_medium" />
+        android:gravity="center_vertical" />
 
     <View
         android:id="@+id/frame"
@@ -59,8 +57,7 @@
         android:layout_marginTop="562dp"
         android:background="@drawable/start_learning_button"
         android:text="@string/start_learning"
-        android:textColor="@color/white"
-        android:fontFamily="@font/sf_pro_display_medium" />
+        android:textAppearance="@style/start_learning" />
 
     <TextView
         android:id="@+id/already_have"
@@ -68,17 +65,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="81dp"
         android:layout_marginTop="628dp"
-        android:gravity="center_horizontal|top"
+        android:gravity="start"
         android:lineSpacingExtra="1sp"
         android:text="@string/already_have"
         android:textAppearance="@style/already_have"
-        android:fontFamily="@font/sf_pro_display_medium"
         android:translationY="-0.32sp" />
-    <!--
-      Font family: SF Pro Display
-      Line height: 20sp
-      (identical to box height)
-      translationY compensates for the line height adjustment of text
-      -->
+
+    <Button
+        android:id="@+id/log_in"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="612dp"
+        android:gravity="center"
+        android:text="@string/log_in"
+        android:textAppearance="@style/log_in" />
 
 </RelativeLayout>

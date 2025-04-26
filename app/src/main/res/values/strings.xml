@@ -7,8 +7,22 @@
     </string>
     <string name="start_learning" translatable="false">Start learning</string>
     <string name="already_have" translatable="false">
-        Already have an account? Log in
+        Already have an account?
     </string>
+    <string name="log_in" translatable="false">Log in</string>
+
+    <!-- layout/activity_choose_language.xml -->
+    <string name="choose_language">Choose a language you want to learn</string>
+    <string name="croatian">Croatian</string>
+    <string name="spanish">Spanish</string>
+    <string name="english">English</string>
+
+    <!-- layout/activity_choose_city.xml -->
+    <string name="choose_city">Choose a city you want to explore</string>
+    <string name="city_zagreb">City of Zagreb</string>
+    <string name="city_rijeka">City of Rijeka</string>
+    <string name="city_split">City of Split</string>
+
     <!-- END -->
 
     <string name="app_name">Hackaton</string>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F4F9"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/arrow_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/choose_city"
+        android:layout_width="324dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/choose_city"
+        android:textAppearance="@style/choose"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/city_zagreb"
+        android:layout_width="326dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="162dp"
+        android:background="@drawable/select_language_city"
+        android:text="@string/city_zagreb"
+        android:textAppearance="@style/language_city"
+        android:drawableStart="@drawable/coa_zagreb"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/city_split"
+        android:layout_width="326dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/select_language_city"
+        android:text="@string/city_split"
+        android:textAppearance="@style/language_city"
+        android:drawableStart="@drawable/coa_split"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city_zagreb"
+        />
+
+    <Button
+        android:id="@+id/city_rijeka"
+        android:layout_width="326dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/select_language_city"
+        android:text="@string/city_rijeka"
+        android:textAppearance="@style/language_city"
+        android:drawableStart="@drawable/coa_rijeka"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city_split"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

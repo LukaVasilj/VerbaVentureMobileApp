@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="choose_language">Odaberi jezik koji želiš učiti</string>
+    <string name="croatian" >Hrvatski</string>
+    <string name="spanish">Španjolski</string>
+    <string name="english">Engleski</string>
+    <string name="choose_city">Odaberi grad koji želiš istražiti</string>
+    <string name="city_zagreb">Zagreb</string>
+    <string name="city_rijeka">Rijeka</string>
+    <string name="city_split">Split</string>
+
     <string name="app_name">Hackaton</string>
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Otvori navigacijski izbornik</string>

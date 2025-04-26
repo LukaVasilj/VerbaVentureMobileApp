@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="choose_language">Elige el idioma que quieras aprender</string>
+    <string name="spanish">Español</string>
+    <string name="english">Inglés</string>
+    <string name="choose_city">Elige una ciudad que quieras explorar</string>
+    <string name="city_zagreb">Ciudad de Zagreb</string>
+    <string name="city_rijeka">Ciudad de Rijeka</string>
+    <string name="city_split">Ciudad de Split</string>
+
     <string name="app_name">Hackaton</string>
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Abrir el menú de navegación</string>
@@ -21,6 +29,7 @@
 
     <string name="start_challenge">Iniciar Desafío</string>
     <string name="tts_play">Reproducir</string>
+
     <!-- Login -->
     <string name="email_hint">Correo electrónico</string>
     <string name="password_hint">Contraseña</string>
@@ -64,6 +73,7 @@
     <string name="current_language_icon">Current Language Icon</string>
     <string name="challenge_points">Vrijednost poena: %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
+    <string name="croatian" >Croata</string>
 
     <string-array name="native_language_array">
         <item>Croata</item>
