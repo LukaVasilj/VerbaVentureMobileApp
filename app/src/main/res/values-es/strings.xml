@@ -12,7 +12,7 @@
     <string name="login">Iniciar sesión</string>
     <string name="start_adventure">Comenzar Aventura</string>
     <string name="welcome_message">¡Bienvenido, %1$s!</string>
-    <string name="points">Puntos: %1$d</string>
+    <string name="points">Puntos: %1$d / %2$d</string>
     <string name="level">Nivel: %1$d</string>
     <string name="badges">Insignias: %1$d</string>
     <string name="adventure_mode">Modo Aventura</string>
@@ -62,7 +62,7 @@
     <string name="distance">Distancia: %1$.2f metros</string>
     <string name="speech_recognition">Speech Recognition</string>
     <string name="current_language_icon">Current Language Icon</string>
-    <string name="challenge_points">Vrijednost poena: %1$d</string>
+    <string name="challenge_points">Puntos : %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
 
     <string-array name="native_language_array">
@@ -77,8 +77,9 @@
     <string-array name="city_array">
         <item>-- Seleccionar Ubicación --</item>
         <item>Zagreb</item>
-        <item>París</item>
-        <item>Usar ubicación actual</item>
+        <item>Split</item>
+        <item>Rijeka</item>
+        <item>Use current location</item>
     </string-array>
     <string-array name="languages_array">
         <item>Inglés</item>

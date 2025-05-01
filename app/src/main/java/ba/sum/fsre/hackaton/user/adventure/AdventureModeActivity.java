@@ -94,14 +94,18 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         // Get the localized string for "Use current location"
         String useCurrentLocation = getString(R.string.use_current_location);
 
+
         // Set selected location based on city or current location
         if (city != null && !city.equals(useCurrentLocation)) {
             if (city.equals("Zagreb")) {
                 selectedLocation = new LatLng(45.8150, 15.9819);
                 selectedCity = "Zagreb";
-            } else if (city.equals("Paris")) {
-                selectedLocation = new LatLng(48.8566, 2.3522);
-                selectedCity = "Paris";
+            } else if (city.equals("Split")) {
+                selectedLocation = new LatLng(43.5081, 16.4402);
+                selectedCity = "Split";
+            } else if (city.equals("Rijeka")) {
+                selectedLocation = new LatLng(45.3271, 14.4422);
+                selectedCity = "Rijeka";
             }
         } else {
             selectedLocation = new LatLng(latitude, longitude);
@@ -360,6 +364,9 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                     break;
                 case "Museum":
                     placeIcon.setImageResource(R.drawable.museum_icon);
+                    break;
+                case "Statue":
+                    placeIcon.setImageResource(R.drawable.statue_icon);
                     break;
                 // Add more cases for other categories
                 default:

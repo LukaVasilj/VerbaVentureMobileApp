@@ -10,9 +10,9 @@
     <string name="confirm">Potvrdi</string>
     <string name="start_adventure">Započni avanturu</string>
     <string name="welcome_message">Dobrodošli, %1$s!</string>
-    <string name="points">Bodovi: %1$d</string>
+    <string name="points">Bodovi: %1$d / %2$d</string>
     <string name="level">Razina: %1$d</string>
-    <string name="badges">Značke: %1$d</string>
+    <string name="badges">Badge:</string>
     <string name="adventure_mode">Način Avanture</string>
     <string name="home_learning_mode">Način Učenja Kod Kuće</string>
     <string name="register">Registracija</string>
@@ -62,7 +62,7 @@
     <string name="distance">Udaljenost: %1$.2f metara</string>
     <string name="speech_recognition">Speech Recognition</string>
     <string name="current_language_icon">Current Language Icon</string>
-    <string name="challenge_points">Vrijednost poena: %1$d</string>
+    <string name="challenge_points">Bodovi : %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
 
 
@@ -78,8 +78,9 @@
     <string-array name="city_array">
         <item>-- Odaberite Lokaciju --</item>
         <item>Zagreb</item>
-        <item>Pariz</item>
-        <item>Koristi trenutnu lokaciju</item>
+        <item>Split</item>
+        <item>Rijeka</item>
+        <item>Use current location</item>
     </string-array>
     <string-array name="languages_array">
         <item>Engleski</item>

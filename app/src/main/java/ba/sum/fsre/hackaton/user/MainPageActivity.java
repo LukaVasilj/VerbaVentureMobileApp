@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -198,6 +200,9 @@ public class MainPageActivity extends AppCompatActivity {
                                                             // Update UI
                                                             levelTextView.setText(getString(R.string.level, currentLevel[0]));
                                                             pointsTextView.setText(getString(R.string.points, currentPoints[0], pointsForNextLevel[0]));
+
+                                                            // Update badge based on level
+                                                            updateBadgeBasedOnLevel(currentLevel[0]);
                                                         } else {
                                                             Toast.makeText(MainPageActivity.this, "Failed to update level and points.", Toast.LENGTH_SHORT).show();
                                                         }
@@ -210,6 +215,35 @@ public class MainPageActivity extends AppCompatActivity {
                             }
                         }
                     });
+        }
+    }
+
+    private void updateBadgeBasedOnLevel(int userLevel) {
+        ImageView badgeIconImageView = findViewById(R.id.badgeIconImageView);
+
+        // Set the badge icon based on the user's level
+        switch (userLevel) {
+            case 6:
+                badgeIconImageView.setImageResource(R.drawable.badges6_icon);
+                break;
+            case 5:
+                badgeIconImageView.setImageResource(R.drawable.badges5_icon);
+                break;
+            case 4:
+                badgeIconImageView.setImageResource(R.drawable.badges4_icon);
+                break;
+            case 3:
+                badgeIconImageView.setImageResource(R.drawable.badges3_icon);
+                break;
+            case 2:
+                badgeIconImageView.setImageResource(R.drawable.badges2_icon);
+                break;
+            case 1:
+                badgeIconImageView.setImageResource(R.drawable.badges1_icon);
+                break;
+            default:
+                badgeIconImageView.setImageResource(R.drawable.default_icon);
+                break;
         }
     }
 

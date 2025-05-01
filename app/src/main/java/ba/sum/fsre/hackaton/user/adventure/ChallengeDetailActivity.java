@@ -109,6 +109,8 @@ public class ChallengeDetailActivity extends AppCompatActivity implements OnMapR
         descriptionTextView.setText(challengeDescriptionText);
         pointsTextView.setText(getString(R.string.challenge_points, points)); // Display points
 
+
+
         // Translate text
         TranslationUtil.translateText(challengeDescription, learningLanguage, new TranslationUtil.TranslationCallback() {
             @Override
@@ -345,6 +347,8 @@ public class ChallengeDetailActivity extends AppCompatActivity implements OnMapR
             Log.e(TAG, "Language code is null");
         }
     }
+
+
 
     @Override
     protected void onDestroy() {
