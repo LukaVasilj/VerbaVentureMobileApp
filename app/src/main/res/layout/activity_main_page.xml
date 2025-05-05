@@ -115,7 +115,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
-                            android:text="Adventure Mode"
+                            android:text="@string/adventure_mode_title"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -133,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
-                            android:text="Explore and learn through interactive adventures."
+                            android:text="@string/adventure_mode_description"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
-                            android:text="Home Learning Mode"
+                            android:text="@string/home_learning_mode_title"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -178,7 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
-                            android:text="Learn at your own pace from home."
+                            android:text="@string/home_learning_mode_description"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -195,5 +195,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="#CC0F38B1"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
         app:menu="@menu/bottom_navigation_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

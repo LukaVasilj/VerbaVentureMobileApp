@@ -12,15 +12,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 import ba.sum.fsre.hackaton.R;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -85,6 +88,21 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Contact support
         findViewById(R.id.contactSupportButton).setOnClickListener(v -> contactSupport());
+
+        // Handle navigation drawer menu item clicks
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.navigation_home) {
+                // Navigate to MainPageActivity
+                Intent intent = new Intent(SettingsActivity.this, MainPageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // Close SettingsActivity
+                return true;
+            }
+            return false;
+        });
     }
 
     private void fetchUserInfo(String userId) {

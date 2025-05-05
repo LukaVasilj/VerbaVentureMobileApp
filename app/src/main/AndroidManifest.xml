@@ -85,6 +85,32 @@
             android:exported="true"
             android:label="VerbaVenture" />
         <activity
+            android:name=".user.home.SelectLanguageActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="VerbaVenture" />
+        <activity
+            android:name=".user.home.LessonActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="VerbaVenture" />
+        <activity
+            android:name=".user.home.FlashcardActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="VerbaVenture" />
+        <activity
+            android:name=".user.home.QuizActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="VerbaVenture" />
+        <activity
+            android:name=".user.home.QuizResultActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true"
+            android:label="VerbaVenture" />
+
+        <activity
             android:name=".user.adventure.ChallengeDetailActivity"
             android:theme="@style/AppTheme"
             android:exported="true" />

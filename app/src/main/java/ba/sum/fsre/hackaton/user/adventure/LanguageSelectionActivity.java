@@ -1,4 +1,3 @@
-// LanguageSelectionActivity.java
 package ba.sum.fsre.hackaton.user.adventure;
 
 import android.Manifest;
@@ -9,7 +8,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -22,7 +20,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import ba.sum.fsre.hackaton.R;
@@ -47,7 +44,6 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         LANGUAGE_MAP.put("English", "en");
         LANGUAGE_MAP.put("Spanish", "es");
         LANGUAGE_MAP.put("Croatian", "hr");
-        // Add other languages as needed
     }
 
     @Override
@@ -64,15 +60,20 @@ public class LanguageSelectionActivity extends AppCompatActivity {
         startAdventureButton = findViewById(R.id.startAdventureButton);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Set up the spinners
-        ArrayAdapter<CharSequence> learningLanguageAdapter = ArrayAdapter.createFromResource(this,
-                R.array.learning_language_array, android.R.layout.simple_spinner_item);
-        learningLanguageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        learningLanguageSpinner.setAdapter(learningLanguageAdapter);
+        // Load languages from string-array resource
+        String[] languages = getResources().getStringArray(R.array.learning_language_array);
+        int[] languageIcons = {R.drawable.ic_earth, R.drawable.flag_english, R.drawable.flag_spanish, R.drawable.flag_croatian};
 
-        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this,
-                R.array.city_array, android.R.layout.simple_spinner_item);
-        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Set custom adapter for learningLanguageSpinner
+        LanguageSpinnerAdapter languageAdapter = new LanguageSpinnerAdapter(this, languages, languageIcons);
+        learningLanguageSpinner.setAdapter(languageAdapter);
+
+        // Load cities from string-array resource
+        String[] cities = getResources().getStringArray(R.array.city_array);
+        int[] cityIcons = {R.drawable.ic_selectlocation, R.drawable.ic_zagreb, R.drawable.ic_split, R.drawable.ic_rijeka, R.drawable.ic_currentlocation};
+
+        // Set custom adapter for citySpinner
+        CitySpinnerAdapter cityAdapter = new CitySpinnerAdapter(this, cities, cityIcons);
         citySpinner.setAdapter(cityAdapter);
 
         // Disable the button initially

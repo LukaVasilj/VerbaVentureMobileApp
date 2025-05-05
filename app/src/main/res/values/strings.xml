@@ -13,7 +13,7 @@
     <string name="welcome_message">Welcome, %1$s!</string>
     <string name="points">Points: %1$d / %2$d</string>
     <string name="level">Level: %1$d</string>
-    <string name="badges">Badge: %1$d</string>
+    <string name="badges">Badge:</string>
     <string name="adventure_mode">Adventure Mode</string>
     <string name="home_learning_mode">Home Learning Mode</string>
     <string name="category">Category: %1$s</string>
@@ -49,17 +49,12 @@
     <string name="registration_failed">Registration failed: %1$s</string>
     <string name="terms_text">Terms and Conditions</string>
     <string name="privacy_text">Privacy Policy</string>
-
     <string name="use_current_location">Use current location</string>
     <string name="loading">Loading</string>
-
     <string name="category_icon">Category Icon</string>
-
     <string name="select_city">Select City</string>
-
     <string name="select_language">-- Select Language --</string>
     <string name="select_location">-- Select Location --</string>
-
     <string name="challenge_title">Challenge title: %1$s</string>
     <string name="challenge_description">Challenge: %1$s</string>
     <string name="translated_challenge">Challenge: %1$s</string>
@@ -68,8 +63,15 @@
     <string name="current_language_icon">Current Language Icon</string>
     <string name="challenge_points">Points : %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
-
     <string name="speech_recognition">Speech Recognition</string>
+    <string name="select_language_to_learn">Select a language to learn:</string>
+    <string name="learn_english">English</string>
+    <string name="learn_croatian">Croatian</string>
+    <string name="learn_spanish">Spanish</string>
+    <string name="home_learning_mode_description">Practice language skills comfortably from home</string>
+    <string name="home_learning_mode_title">Home Learning Mode</string>
+    <string name="adventure_mode_description">Explore and learn through interactive adventures.</string>
+    <string name="adventure_mode_title">Adventure Mode</string>
     <string-array name="native_language_array">
         <item>Croatian</item>
     </string-array>

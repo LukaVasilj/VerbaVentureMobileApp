@@ -14,7 +14,7 @@
     <string name="welcome_message">¡Bienvenido, %1$s!</string>
     <string name="points">Puntos: %1$d / %2$d</string>
     <string name="level">Nivel: %1$d</string>
-    <string name="badges">Insignias: %1$d</string>
+    <string name="badges">Insignias:</string>
     <string name="adventure_mode">Modo Aventura</string>
     <string name="home_learning_mode">Modo de Aprendizaje en Casa</string>
     <string name="category">Categoría: %1$s</string>
@@ -64,6 +64,15 @@
     <string name="current_language_icon">Current Language Icon</string>
     <string name="challenge_points">Puntos : %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
+    <string name="home_learning_mode_description">Practica habilidades lingüísticas cómodamente desde casa</string>
+    <string name="home_learning_mode_title">Modo de aprendizaje desde casa</string>
+    <string name="adventure_mode_description">Explora y aprende a través de aventuras interactivas.</string>
+    <string name="adventure_mode_title">Modo aventura</string>
+
+    <string name="select_language_to_learn">Selecciona un idioma para aprender:</string>
+    <string name="learn_english">Inglés</string>
+    <string name="learn_croatian">Croata</string>
+    <string name="learn_spanish">Español</string>
 
     <string-array name="native_language_array">
         <item>Croata</item>

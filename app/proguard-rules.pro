@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Keep the Flashcard class to prevent it from being obfuscated
+-keep class ba.sum.fsre.hackaton.user.home.Flashcard { *; }

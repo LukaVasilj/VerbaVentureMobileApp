@@ -184,5 +184,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="#CC0F38B1"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
         app:menu="@menu/bottom_navigation_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

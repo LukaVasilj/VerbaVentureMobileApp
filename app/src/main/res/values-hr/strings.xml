@@ -13,8 +13,8 @@
     <string name="points">Bodovi: %1$d / %2$d</string>
     <string name="level">Razina: %1$d</string>
     <string name="badges">Badge:</string>
-    <string name="adventure_mode">Način Avanture</string>
-    <string name="home_learning_mode">Način Učenja Kod Kuće</string>
+    <string name="adventure_mode">Adventure mode</string>
+    <string name="home_learning_mode">Home learning mode</string>
     <string name="register">Registracija</string>
     <string name="login">Prijava</string>
     <string name="category">Categoría: %1$s</string>
@@ -65,7 +65,14 @@
     <string name="challenge_points">Bodovi : %1$d</string>
     <string name="points_not_available">Poeni nisu dostupni</string>
 
-
+    <string name="select_language_to_learn">Izaberi jezik koji želiš naučiti:</string>
+    <string name="learn_english">Engleski</string>
+    <string name="learn_croatian">Hrvatski</string>
+    <string name="learn_spanish">Španjolski</string>
+    <string name="home_learning_mode_description">Usavršavajte jezik iz udobnosti svog doma</string>
+    <string name="home_learning_mode_title">Način učenja od kuće</string>
+    <string name="adventure_mode_description">Istražujte i učite kroz interaktivne avanture.</string>
+    <string name="adventure_mode_title">Način avanture</string>
     <string-array name="native_language_array">
         <item>Hrvatski</item>
     </string-array>

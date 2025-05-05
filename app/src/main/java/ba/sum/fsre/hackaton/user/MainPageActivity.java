@@ -1,11 +1,9 @@
 package ba.sum.fsre.hackaton.user;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +41,7 @@ import java.util.Map;
 import ba.sum.fsre.hackaton.MainActivity;
 import ba.sum.fsre.hackaton.R;
 import ba.sum.fsre.hackaton.user.adventure.LanguageSelectionActivity;
+import ba.sum.fsre.hackaton.user.home.SelectLanguageActivity;
 
 public class MainPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -148,6 +147,22 @@ public class MainPageActivity extends AppCompatActivity {
         languageFlags.put("hr", R.drawable.flag_croatian);
         languageFlags.put("es", R.drawable.flag_spanish);
 
+        // Initialize the Home Learning Mode button
+        Button homeLearningModeButton = findViewById(R.id.homeLearningModeButton);
+        homeLearningModeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Fetch the currently selected app language
+                SharedPreferences prefs = getSharedPreferences("Settings", MODE_PRIVATE);
+                String appLanguage = prefs.getString("My_Lang", "hr"); // Default is "hr"
+
+                // Start LanguageSelectionActivity and pass the app language
+                Intent intent = new Intent(MainPageActivity.this, SelectLanguageActivity.class);
+                intent.putExtra("appLanguage", appLanguage);
+                startActivity(intent);
+            }
+        });
+
         // Update the Adventure Mode button logic
         Button adventureModeButton = findViewById(R.id.adventureModeButton);
         adventureModeButton.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +173,9 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
     private void updateLevelAndPoints(long points) {
         final int[] currentLevel = {1}; // Initial level
@@ -264,6 +282,7 @@ public class MainPageActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private int selectedLanguageIndex = -1; // Store the selected index
 
     private void showLanguageSelectionDialog() {
         final String[] languages = {"English", "Hrvatski", "Español"};
@@ -278,7 +297,7 @@ public class MainPageActivity extends AppCompatActivity {
         ListView languageListView = dialogView.findViewById(R.id.languageListView);
         Button confirmButton = dialogView.findViewById(R.id.confirmButton);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, languages) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, languages) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -293,24 +312,20 @@ public class MainPageActivity extends AppCompatActivity {
         };
         languageListView.setAdapter(adapter);
 
-        final AlertDialog dialog = builder.create();
-
-        // Customize the dialog window attributes
-        Window window = dialog.getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-            layoutParams.copyFrom(window.getAttributes());
-            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            window.setAttributes(layoutParams);
+        // Restore the previously selected language
+        if (selectedLanguageIndex != -1) {
+            languageListView.setItemChecked(selectedLanguageIndex, true);
         }
 
         languageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedLanguageIndex = position; // Save the selected index
                 selectedLanguage = languageCodes[position];
             }
         });
+
+        final AlertDialog dialog = builder.create(); // Declare and initialize the dialog here
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,7 +333,7 @@ public class MainPageActivity extends AppCompatActivity {
                 if (selectedLanguage != null) {
                     setLocale(selectedLanguage);
                     saveLanguagePreference(selectedLanguage);
-                    dialog.dismiss();
+                    dialog.dismiss(); // Use the dialog variable here
                     recreate(); // Restart activity to apply language change
                 }
             }
