@@ -90,43 +90,59 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <TextView
-                    android:id="@+id/nativeTextView"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:gravity="start"
-                    android:layout_marginBottom="12dp"/>
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/language_option_background"
+                    android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/translatedTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textColor="@color/darkGray"
-                    android:textStyle="bold"
-                    android:gravity="start"
-                    android:layout_marginBottom="16dp"/>
+                    <TextView
+                        android:id="@+id/nativeTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:layout_marginBottom="12dp" />
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start"
-                    android:layout_marginBottom="16dp">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/language_option_background"
+                    android:padding="8dp">
 
-                    <ImageButton
-                        android:id="@+id/ttsButton"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="?android:selectableItemBackgroundBorderless"
-                        android:src="@drawable/play"
-                        android:contentDescription="@string/tts_play"
-                        app:tint="@color/colorPrimary"
-                        android:layout_marginEnd="12dp"/>
+                    <TextView
+                        android:id="@+id/translatedTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/darkGray"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:layout_marginBottom="12dp" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="start">
+
+                        <ImageButton
+                            android:id="@+id/ttsButton"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="?android:selectableItemBackgroundBorderless"
+                            android:src="@drawable/play"
+                            android:contentDescription="@string/tts_play"
+                            app:tint="@color/colorPrimary"
+                            android:layout_marginEnd="12dp" />
+                    </LinearLayout>
                 </LinearLayout>
 
 

@@ -39,26 +39,26 @@ public class LessonActivity extends AppCompatActivity {
         List<LessonCard> lessonCards = new ArrayList<>();
         lessonCards.add(new LessonCard(
                 R.drawable.ic_animals,
-                "Životinje",
-                "Nauči nazive životinja.",
-                getProgress("Životinje", 5),
-                "Započni"
+                "Animals",
+                "Learn the names of animals.",
+                getProgress("Animals", 5),
+                "Start"
         ));
-        Log.d("LessonActivity", "Progress for Životinje: " + getProgress("Životinje", 5)); // Add this here
+        Log.d("LessonActivity", "Progress for Animals: " + getProgress("Animals", 5)); // Add this here
 
         lessonCards.add(new LessonCard(
                 R.drawable.ic_colors,
-                "Boje",
-                "Nauči boje.",
+                "Colors",
+                "Learn colors.",
                 getProgress("progress_colors", 5),
-                "Započni"
+                "Start"
         ));
         lessonCards.add(new LessonCard(
                 R.drawable.ic_family,
-                "Obitelj i prijatelji",
-                "Nauči nazive članove obitelji.",
+                "Family",
+                "Learn the names of family members.",
                 getProgress("progress_family", 5),
-                "Započni"
+                "Start"
         ));
 
         LessonCardAdapter adapter = new LessonCardAdapter(this, lessonCards, (lessonTitle) -> {
