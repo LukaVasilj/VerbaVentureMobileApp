@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSplash"> <!-- Background color -->
+    android:background="@drawable/background"> <!-- Background color -->
 
     <ImageView
         android:id="@+id/splashImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/logo" /> <!-- Logo in the center -->
+        android:layout_marginTop="150dp"
+
+        android:src="@drawable/logoo" /> <!-- Logo in the center -->
 
     <TextView
         android:id="@+id/splashTextView"
@@ -20,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Discover languages through adventure!"
-        android:textColor="@color/purple_200"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp" /> <!-- Text below the logo -->
 
     <ProgressBar
@@ -37,5 +38,5 @@
         android:maxHeight="16dip"
         android:minHeight="16dip"
         android:progress="0"
-        android:progressTint="@color/secondaryColor" />
+        android:progressTint="@color/colorPrimary" />
 </RelativeLayout>

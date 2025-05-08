@@ -3,17 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/background"
+    android:gravity="center">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logoo"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/appDescription"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="@string/app_description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:fontFamily="@font/roboto_medium" />
 
+    <!-- Register Button -->
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register" />
+        android:text="@string/registerr"
+        android:backgroundTint="@color/secondaryColor"
+        android:textColor="@android:color/white" />
 </LinearLayout>

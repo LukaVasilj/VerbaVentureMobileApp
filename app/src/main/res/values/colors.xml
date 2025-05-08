@@ -22,5 +22,10 @@
     <color name="light_gray">#F5F5F5</color>
     <color name="selected_item_background">#D3D3D3</color> <!-- Light gray for selected item background -->
     <color name="pozadina">#E2FFDC</color>
+    <color name="input">#7AA8A8A8</color>
+    <color name="input2">#99A8A8A8</color>
+    <color name="input3">#99C7C7C7</color>
+    <color name="input4">#96E2E2E2</color>
+
 
 </resources>

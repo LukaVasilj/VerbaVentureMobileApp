@@ -239,6 +239,8 @@ public class ChallengeDetailActivity extends AppCompatActivity implements OnMapR
                     Toast.makeText(this, "Correct! You said the sentence correctly.", Toast.LENGTH_SHORT).show();
                     // Enable the "Finish Challenge" button
                     finishChallengeButton.setEnabled(true);
+                    finishChallengeButton.setBackgroundTintList(getResources().getColorStateList(R.color.secondaryColor));
+
                 } else {
                     Toast.makeText(this, "Incorrect. Try again.", Toast.LENGTH_SHORT).show();
                 }

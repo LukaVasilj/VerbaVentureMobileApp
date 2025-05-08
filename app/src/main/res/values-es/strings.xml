@@ -8,7 +8,8 @@
     <string name="select_languagee">Seleccionar idioma</string>
     <string name="change_language">Cambiar idioma</string>
     <string name="confirm">Confirmar</string>
-    <string name="register">Registrarse</string>
+    <string name="register">Register</string>
+    <string name="registerr">Get Started</string>
     <string name="login">Iniciar sesión</string>
     <string name="start_adventure">Comenzar Aventura</string>
     <string name="welcome_message">¡Bienvenido, %1$s!</string>
@@ -18,7 +19,7 @@
     <string name="adventure_mode">Modo Aventura</string>
     <string name="home_learning_mode">Modo de Aprendizaje en Casa</string>
     <string name="category">Categoría: %1$s</string>
-
+    <string name="app_description">¡Bienvenido a VerbaVenture! Esta aplicación te ayuda a aprender y explorar nuevos idiomas de manera interactiva y divertida. Ya sea en casa o en una aventura, mejora tus habilidades con facilidad. ¡Comienza tu viaje hoy!</string>
     <string name="start_challenge">Iniciar Desafío</string>
     <string name="tts_play">Reproducir</string>
     <!-- Login -->
@@ -68,6 +69,7 @@
     <string name="home_learning_mode_title">Modo de aprendizaje desde casa</string>
     <string name="adventure_mode_description">Explora y aprende a través de aventuras interactivas.</string>
     <string name="adventure_mode_title">Modo aventura</string>
+    <string name="finish_challenge">Finish Challenge</string>
 
     <string name="select_language_to_learn">Selecciona un idioma para aprender:</string>
     <string name="learn_english">Inglés</string>

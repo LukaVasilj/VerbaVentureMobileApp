@@ -39,8 +39,9 @@
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp"/>
+
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/lobster"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -63,7 +64,8 @@
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:padding="8dp" />
+                            android:padding="8dp"
+                            android:fontFamily="@font/gelasio"/>
 
                         <TextView
                             android:id="@+id/pointsTextView"
@@ -73,7 +75,8 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"
-                            android:padding="8dp" />
+                            android:padding="8dp"
+                            android:fontFamily="@font/gelasio"/>
 
                         <TextView
                             android:id="@+id/distanceTextView"
@@ -84,7 +87,8 @@
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"
                             android:padding="8dp"
-                            android:text="@string/distance" />
+                            android:text="@string/distance"
+                            android:fontFamily="@font/gelasio"/>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -106,7 +110,8 @@
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:gravity="start"
-                        android:layout_marginBottom="12dp" />
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="@font/gelasio"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -122,10 +127,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:textColor="@color/darkGray"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:gravity="start"
-                        android:layout_marginBottom="12dp" />
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="@font/gelasio"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -161,7 +167,9 @@
                     android:id="@+id/finishChallengeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Završi izazov"
+                    android:text="@string/finish_challenge"
+                    android:textColor="@color/white"
+
                     android:layout_marginTop="16dp"
                     android:layout_gravity="center"
                     android:enabled="false" />

@@ -63,6 +63,7 @@
             android:exported="true" />
         <activity
             android:name=".auth.PasswordRecoveryActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".user.MainPageActivity"
@@ -71,6 +72,7 @@
             android:label="VerbaVenture" />
         <activity
             android:name=".auth.VerifyEmailActivity"
+            android:theme="@style/AppTheme"
             android:exported="true" />
         <activity
             android:name=".admin.AdminDashboardActivity"

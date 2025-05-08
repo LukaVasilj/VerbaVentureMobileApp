@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:fillViewport="true"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <!-- Email Field -->
         <com.google.android.material.textfield.TextInputLayout
@@ -23,7 +26,9 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:background="@color/input4"
+                android:paddingStart="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Field -->
@@ -40,28 +45,32 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:background="@color/input4"
+                android:paddingStart="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Login Button -->
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/secondaryColor"
             android:text="@string/login"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_gravity="center" />
 
         <!-- Google Sign-In Button -->
         <Button
             android:id="@+id/googleSignInButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/secondaryColor"
             android:text="@string/sign_in_with_google"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_gravity="center" />
 
         <!-- Forgot password -->
         <TextView
