@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:fillViewport="true"
-    android:background="@drawable/background">
+    android:background="@drawable/bbackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,7 @@
             android:text="Please verify your account to activate profile."
             android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:layout_gravity="center" />
 
         <!-- Go to Login Button -->

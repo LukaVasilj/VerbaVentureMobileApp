@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"> <!-- Background color -->
+    android:background="@drawable/bbackground"> <!-- Background color -->
 
     <ImageView
         android:id="@+id/splashImageView"
@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
 
-        android:src="@drawable/logoo" /> <!-- Logo in the center -->
+        android:src="@drawable/llogo" /> <!-- Logo in the center -->
 
     <TextView
         android:id="@+id/splashTextView"

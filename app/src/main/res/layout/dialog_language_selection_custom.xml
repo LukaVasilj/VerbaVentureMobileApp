@@ -21,7 +21,7 @@
         android:id="@+id/languageListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@android:color/darker_gray"
+        android:divider="@drawable/divider"
         android:dividerHeight="1dp"
         android:choiceMode="singleChoice" />
 
@@ -31,7 +31,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/confirm"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/secondaryColor"
-        android:textColor="@android:color/white" />
+        android:layout_marginTop="16dp" />
 </LinearLayout>

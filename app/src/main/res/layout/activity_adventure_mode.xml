@@ -42,6 +42,4 @@
             android:dividerHeight="1dp"
             android:background="@android:color/transparent" />
     </androidx.cardview.widget.CardView>
-
-
 </RelativeLayout>
