@@ -75,6 +75,8 @@
     <string name="adventure_mode_description">Explore and learn through interactive adventures.</string>
     <string name="adventure_mode_title">Adventure Mode</string>
     <string name="finish_challenge">Finish Challenge</string>
+    <string name="next">Next</string>
+    <string name="show_translation">Show translation</string>
 
     <string-array name="native_language_array">
         <item>Croatian</item>
