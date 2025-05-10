@@ -26,13 +26,23 @@ public class QuizResultActivity extends AppCompatActivity {
         int score = getIntent().getIntExtra("score", 0);
         int totalQuestions = getIntent().getIntExtra("totalQuestions", 0);
         String lessonTitle = getIntent().getStringExtra("lessonTitle");
+        String learningLanguage = getIntent().getStringExtra("learningLanguage");
 
-        resultTextView.setText("You scored " + score + " out of " + totalQuestions + "!");
+        if (lessonTitle == null || lessonTitle.isEmpty() || learningLanguage == null || learningLanguage.isEmpty()) {
+            Log.e(TAG, "Lesson title or learning language is null or empty!");
+            return;
+        }
+
+        // Map the lesson title to the learning language
+        String learningLanguageTitle = getLessonTitleInLearningLanguage(lessonTitle, learningLanguage);
+
+        // Display the result
+        resultTextView.setText(getString(R.string.quiz_result_text, score, totalQuestions));
 
         // Save progress to SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("LessonProgress", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        String progressKey = "progress_" + lessonTitle;
+        String progressKey = "progress_" + learningLanguage + "_" + learningLanguageTitle.toLowerCase();
 
         // Retrieve the previously saved score
         int previousScore = sharedPreferences.getInt(progressKey, 0);
@@ -41,16 +51,35 @@ public class QuizResultActivity extends AppCompatActivity {
         if (score > previousScore) {
             editor.putInt(progressKey, score);
             editor.apply();
-            Log.d(TAG, "Updated progress for " + lessonTitle + ": " + score + "/" + totalQuestions);
+            Log.d(TAG, "Updated progress for " + learningLanguageTitle + " in " + learningLanguage + ": " + score + "/" + totalQuestions);
         } else {
-            Log.d(TAG, "Progress for " + lessonTitle + " remains: " + previousScore + "/" + totalQuestions);
+            Log.d(TAG, "Progress for " + learningLanguageTitle + " in " + learningLanguage + " remains: " + previousScore + "/" + totalQuestions);
         }
 
         // Set up the button to navigate back to LessonActivity
         goToStartButton.setOnClickListener(v -> {
             Intent intent = new Intent(QuizResultActivity.this, LessonActivity.class);
+            intent.putExtra("appLanguage", getIntent().getStringExtra("appLanguage"));
+            intent.putExtra("learningLanguage", learningLanguage);
             startActivity(intent);
             finish();
         });
+    }
+
+    private String getLessonTitleInLearningLanguage(String localizedTitle, String learningLanguage) {
+        if (learningLanguage.equals("en")) {
+            if (localizedTitle.equals(getString(R.string.lesson_animals_title))) return "Animals";
+            if (localizedTitle.equals(getString(R.string.lesson_colors_title))) return "Colors";
+            if (localizedTitle.equals(getString(R.string.lesson_family_title))) return "Family";
+        } else if (learningLanguage.equals("hr")) {
+            if (localizedTitle.equals(getString(R.string.lesson_animals_title))) return "Životinje";
+            if (localizedTitle.equals(getString(R.string.lesson_colors_title))) return "Boje";
+            if (localizedTitle.equals(getString(R.string.lesson_family_title))) return "Obitelj";
+        } else if (learningLanguage.equals("es")) {
+            if (localizedTitle.equals(getString(R.string.lesson_animals_title))) return "Animales";
+            if (localizedTitle.equals(getString(R.string.lesson_colors_title))) return "Colores";
+            if (localizedTitle.equals(getString(R.string.lesson_family_title))) return "Familia";
+        }
+        return localizedTitle; // Default to the localized title if no mapping is found
     }
 }

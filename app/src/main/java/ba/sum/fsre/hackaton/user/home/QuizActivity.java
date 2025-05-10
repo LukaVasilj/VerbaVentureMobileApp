@@ -103,12 +103,9 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
-        // Show a message indicating if the user's answer was correct
+        // Increment score if the selected answer is correct
         if (selectedAnswer.equals(correctAnswer)) {
-            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
             score++;
-        } else {
-            Toast.makeText(this, "Incorrect! The correct answer is: " + correctAnswer, Toast.LENGTH_SHORT).show();
         }
 
         // Disable further selection
@@ -180,7 +177,8 @@ public class QuizActivity extends AppCompatActivity {
         Intent intent = new Intent(this, QuizResultActivity.class);
         intent.putExtra("score", score);
         intent.putExtra("totalQuestions", flashcards.size());
-        intent.putExtra("lessonTitle", lessonTitle);
+        intent.putExtra("lessonTitle", lessonTitle); // Pass lessonTitle
+        intent.putExtra("learningLanguage", getIntent().getStringExtra("learningLanguage")); // Pass learningLanguage
         startActivity(intent);
         finish();
     }

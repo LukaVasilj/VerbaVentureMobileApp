@@ -285,7 +285,12 @@ public class MainPageActivity extends AppCompatActivity {
     private int selectedLanguageIndex = -1; // Store the selected index
 
     private void showLanguageSelectionDialog() {
-        final String[] languages = {"English", "Hrvatski", "Español"};
+        // Dynamically fetch localized language names
+        final String[] languages = {
+                getString(R.string.language_english), // "English" or "Engleski"
+                getString(R.string.language_croatian), // "Croatian" or "Hrvatski"
+                getString(R.string.language_spanish) // "Spanish" or "Španjolski"
+        };
         final String[] languageCodes = {"en", "hr", "es"};
         final int[] flags = {R.drawable.flag_english, R.drawable.flag_croatian, R.drawable.flag_spanish};
 
@@ -317,25 +322,19 @@ public class MainPageActivity extends AppCompatActivity {
             languageListView.setItemChecked(selectedLanguageIndex, true);
         }
 
-        languageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedLanguageIndex = position; // Save the selected index
-                selectedLanguage = languageCodes[position];
-            }
+        languageListView.setOnItemClickListener((parent, view, position, id) -> {
+            selectedLanguageIndex = position; // Save the selected index
+            selectedLanguage = languageCodes[position];
         });
 
-        final AlertDialog dialog = builder.create(); // Declare and initialize the dialog here
+        final AlertDialog dialog = builder.create();
 
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedLanguage != null) {
-                    setLocale(selectedLanguage);
-                    saveLanguagePreference(selectedLanguage);
-                    dialog.dismiss(); // Use the dialog variable here
-                    recreate(); // Restart activity to apply language change
-                }
+        confirmButton.setOnClickListener(v -> {
+            if (selectedLanguage != null) {
+                setLocale(selectedLanguage);
+                saveLanguagePreference(selectedLanguage);
+                dialog.dismiss();
+                recreate(); // Restart activity to apply language change
             }
         });
 

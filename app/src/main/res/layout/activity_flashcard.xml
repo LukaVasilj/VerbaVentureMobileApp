@@ -54,7 +54,7 @@
             android:id="@+id/wordCounterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Word 1 of 5"
+            android:text="@string/words"
             android:textSize="18sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp" />
@@ -98,7 +98,7 @@
             android:id="@+id/showTranslationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prikaži prijevod"
+            android:text="@string/show_translate"
             android:backgroundTint="@color/secondaryColor"
             android:textColor="@color/white"
             android:layout_marginBottom="16dp" />
@@ -107,7 +107,7 @@
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="@string/next"
             android:backgroundTint="@color/secondaryColor"
             android:textColor="@color/white"
             android:visibility="gone" />

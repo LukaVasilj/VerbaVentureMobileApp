@@ -6,6 +6,8 @@
     <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
     <string name="select_languagee">Odaberite jezik</string>
+    <string name="select_language2">Odaberite jezik aplikacije:</string>
+
     <string name="change_language">Izaberi jezik</string>
     <string name="confirm">Potvrdi</string>
     <string name="start_adventure">Započni avanturu</string>
@@ -13,13 +15,13 @@
     <string name="points">Bodovi: %1$d / %2$d</string>
     <string name="level">Razina: %1$d</string>
     <string name="badges">Badge:</string>
-    <string name="adventure_mode">Adventure mode</string>
-    <string name="home_learning_mode">Home learning mode</string>
+    <string name="adventure_mode">Započni</string>
+    <string name="home_learning_mode">Započni</string>
     <string name="register">Registriraj se</string>
-    <string name="registerr">Get Started</string>
+    <string name="registerr">Započni</string>
     <string name="login">Prijava</string>
-    <string name="category">Categoría: %1$s</string>
-    <string name="app_description">Dobrodošli u VerbaVenture! Ova aplikacija pomaže vam učiti i istraživati nove jezike na interaktivan i zabavan način. Bilo kod kuće ili kroz avanturi, poboljšajte svoje vještine s lakoćom. Započnite svoje putovanje već danas!</string>
+    <string name="category">Kategorija: %1$s</string>
+    <string name="app_description">Dobrodošli u VerbaVenture! Ova aplikacija pomaže vam učiti i istraživati nove jezike na interaktivan i zabavan način. Bilo kod kuće ili kroz avanturu poboljšajte svoje vještine s lakoćom. Započnite svoje putovanje već danas!</string>
     <string name="start_challenge">Iniciar Desafío</string>
     <string name="tts_play">Poslušaj</string>
     <!-- Login -->
@@ -71,10 +73,31 @@
     <string name="learn_croatian">Hrvatski</string>
     <string name="learn_spanish">Španjolski</string>
     <string name="home_learning_mode_description">Usavršavajte jezik iz udobnosti svog doma</string>
-    <string name="home_learning_mode_title">Način učenja od kuće</string>
+    <string name="home_learning_mode_title">Učenje kod kuće</string>
     <string name="adventure_mode_description">Istražujte i učite kroz interaktivne avanture.</string>
-    <string name="adventure_mode_title">Način avanture</string>
+    <string name="adventure_mode_title">Avanturistički način učenja</string>
     <string name="finish_challenge">Završi izazov</string>
+
+    <string name="lesson_animals_title">Životinje</string>
+    <string name="lesson_animals_description">Naučite nazive životinja.</string>
+    <string name="lesson_colors_title">Boje</string>
+    <string name="lesson_colors_description">Naučite boje.</string>
+    <string name="lesson_family_title">Obitelj</string>
+    <string name="lesson_family_description">Naučite nazive članova obitelji.</string>
+    <string name="progress_format">%1$d/%2$d riječi naučeno</string>
+    <string name="start_button_text">Započni</string>
+
+    <string name="words">Riječ 1 od 5</string>
+    <string name="show_translate">Prikaži riječ</string>
+    <string name="next">Dalje</string>
+    <string name="gohomebutton">Počni ispočetka</string>
+    <string name="submit">Pošalji</string>
+
+    <string name="language_english">Engleski</string>
+    <string name="language_croatian">Hrvatski</string>
+    <string name="language_spanish">Španjolski</string>
+    <string name="quiz_result_text">You scored %1$d out of %2$d</string>
+
     <string-array name="native_language_array">
         <item>Hrvatski</item>
     </string-array>

@@ -25,6 +25,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import ba.sum.fsre.hackaton.R;
+import ba.sum.fsre.hackaton.auth.LoginActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -96,6 +97,14 @@ public class SettingsActivity extends AppCompatActivity {
             if (id == R.id.navigation_home) {
                 // Navigate to MainPageActivity
                 Intent intent = new Intent(SettingsActivity.this, MainPageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // Close SettingsActivity
+                return true;
+            }  else if (id == R.id.navigation_logout) {
+                // Handle logout
+                auth.signOut(); // Sign out the user
+                Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish(); // Close SettingsActivity

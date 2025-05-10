@@ -27,7 +27,7 @@
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:background="@color/input4"
+                android:background="@color/input3"
                 android:paddingStart="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,7 +46,7 @@
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:background="@color/input4"
+                android:background="@color/input3"
                 android:paddingStart="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 

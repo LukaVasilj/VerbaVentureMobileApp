@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hackaton</string>
+    <string name="app_name">Verba Venture</string>
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -55,6 +55,7 @@
     <string name="loading">Loading</string>
     <string name="category_icon">Category Icon</string>
     <string name="select_city">Select City</string>
+    <string name="select_language2">Select the application language:</string>
     <string name="select_language">-- Select Language --</string>
     <string name="select_location">-- Select Location --</string>
     <string name="challenge_title">Challenge title: %1$s</string>
@@ -75,6 +76,27 @@
     <string name="adventure_mode_description">Explore and learn through interactive adventures.</string>
     <string name="adventure_mode_title">Adventure Mode</string>
     <string name="finish_challenge">Finish Challenge</string>
+
+    <string name="lesson_animals_title">Animals</string>
+    <string name="lesson_animals_description">Learn the names of animals.</string>
+    <string name="lesson_colors_title">Colors</string>
+    <string name="lesson_colors_description">Learn colors.</string>
+    <string name="lesson_family_title">Family</string>
+    <string name="lesson_family_description">Learn the names of family members.</string>
+    <string name="progress_format">%1$d/%2$d words learned</string>
+    <string name="start_button_text">Start</string>
+
+    <string name="words">Word 1 of 5</string>
+    <string name="show_translate">Show word</string>
+    <string name="next">Next</string>
+    <string name="gohomebutton">Start Over</string>
+    <string name="submit">Submit</string>
+
+    <string name="language_english">English</string>
+    <string name="language_croatian">Croatian</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="quiz_result_text">You scored %1$d out of %2$d</string>
+
 
     <string-array name="native_language_array">
         <item>Croatian</item>

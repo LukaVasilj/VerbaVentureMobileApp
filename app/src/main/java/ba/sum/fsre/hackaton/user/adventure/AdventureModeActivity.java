@@ -215,6 +215,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
 
     private String getCategoryForPlace(String placeName) {
         placeName = placeName.toLowerCase();
+
         if (placeName.contains("restaurant")) {
             return "Restaurant";
         } else if (placeName.contains("museum")) {
@@ -281,7 +282,7 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
                 );
                 PlacesClient placesClient = Places.createClient(AdventureModeActivity.this);
 
-                List<String> queries = Arrays.asList("restaurant");
+                List<String> queries = Arrays.asList("restaurant","caffe","pub","statue","museum");
 
                 for (String query : queries) {
                     FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()

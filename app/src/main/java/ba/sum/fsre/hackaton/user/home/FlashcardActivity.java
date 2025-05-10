@@ -63,22 +63,20 @@ public class FlashcardActivity extends AppCompatActivity {
         });
 
         nextButton.setOnClickListener(v -> {
-            // Move to the next flashcard
             currentIndex++;
             if (currentIndex < flashcards.size()) {
                 displayFlashcard(currentIndex);
                 updateWordCounter(wordCounterTextView, currentIndex, flashcards.size());
-                nextButton.setVisibility(View.GONE); // Hide the "Next" button
-                translatedWordTextView.setVisibility(View.GONE); // Hide the translation
-                showTranslationButton.setVisibility(View.VISIBLE); // Show the "Prikaži prijevod" button
+                nextButton.setVisibility(View.GONE);
+                translatedWordTextView.setVisibility(View.GONE);
+                showTranslationButton.setVisibility(View.VISIBLE);
                 updateProgress(progressBar, progressTextView, currentIndex);
             } else {
-                // End of flashcards, start the quiz
                 Log.d("FlashcardActivity", "End of flashcards reached. Starting QuizActivity.");
-                Log.d("FlashcardActivity", "Flashcards size: " + flashcards.size());
                 Intent intent = new Intent(FlashcardActivity.this, QuizActivity.class);
-                intent.putParcelableArrayListExtra("flashcards", new ArrayList<>(flashcards)); // Pass the flashcards
-                intent.putExtra("lessonTitle", getIntent().getStringExtra("lessonTitle")); // Pass the lesson title
+                intent.putParcelableArrayListExtra("flashcards", new ArrayList<>(flashcards));
+                intent.putExtra("lessonTitle", getIntent().getStringExtra("lessonTitle")); // Pass lessonTitle
+                intent.putExtra("learningLanguage", getIntent().getStringExtra("learningLanguage")); // Pass learningLanguage
                 startActivity(intent);
                 finish();
             }

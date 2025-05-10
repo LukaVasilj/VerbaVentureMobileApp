@@ -51,6 +51,7 @@
     <string name="registration_failed">Registro fallido: %1$s</string>
     <string name="terms_text">Términos y Condiciones</string>
     <string name="privacy_text">Política de Privacidad</string>
+    <string name="select_language2">Select the application language:</string>
 
     <string name="use_current_location">Usar ubicación actual</string>
 
@@ -75,6 +76,26 @@
     <string name="learn_english">Inglés</string>
     <string name="learn_croatian">Croata</string>
     <string name="learn_spanish">Español</string>
+
+    <string name="lesson_animals_title">Animales</string>
+    <string name="lesson_animals_description">Aprende los nombres de los animales.</string>
+    <string name="lesson_colors_title">Colores</string>
+    <string name="lesson_colors_description">Aprende los colores.</string>
+    <string name="lesson_family_title">Familia</string>
+    <string name="lesson_family_description">Aprende los nombres de los miembros de la familia.</string>
+    <string name="progress_format">%1$d/%2$d palabras aprendidas</string>
+    <string name="start_button_text">Comenzar</string>
+
+    <string name="words">Palabra 1 de 5</string>
+    <string name="show_translate">Mostrar palabra</string>
+    <string name="next">Siguiente</string>
+    <string name="gohomebutton">Comenzar de nuevo</string>
+    <string name="submit">Enviar</string>
+
+    <string name="language_english">Inglés</string>
+    <string name="language_croatian">Croata</string>
+    <string name="language_spanish">Español</string>
+    <string name="quiz_result_text">You scored %1$d out of %2$d</string>
 
     <string-array name="native_language_array">
         <item>Croata</item>
