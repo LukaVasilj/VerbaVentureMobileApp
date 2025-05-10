@@ -54,7 +54,7 @@
             android:id="@+id/wordCounterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/words"
+            android:text="Word 1 of 5"
             android:textSize="18sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp" />
@@ -90,7 +90,7 @@
             android:text="Translated Word"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimary"
             android:layout_marginBottom="16dp"
             android:visibility="gone" />
 
@@ -98,18 +98,14 @@
             android:id="@+id/showTranslationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/show_translate"
-            android:backgroundTint="@color/secondaryColor"
-            android:textColor="@color/white"
+            android:text="Prikaži prijevod"
             android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:backgroundTint="@color/secondaryColor"
-            android:textColor="@color/white"
+            android:text="Next"
             android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

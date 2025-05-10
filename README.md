@@ -1,6 +1,6 @@
 # VerbaVenture
 
-**VerbaVenture** je interaktivna aplikacija za učenje jezika osmišljena kako bi proces učenja stranih jezika bio zabavan, angažiran i povezan s stvarnim svijetom. Aplikacija kombinira tradicionalne metode učenja s avanturističkim pristupom, omogućujući korisnicima da vježbaju jezik kroz izazove na stvarnim lokacijama.
+**VerbaVenture** je interaktivna aplikacija za učenje jezika osmišljena kako bi proces učenja stranih jezika bio zabavan, angažiran i povezan sa stvarnim svijetom. Aplikacija kombinira tradicionalne metode učenja s avanturističkim pristupom, omogućujući korisnicima da vježbaju jezik kroz izazove na stvarnim lokacijama.
 
 ---
 

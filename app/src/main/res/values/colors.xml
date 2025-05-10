@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FF9A1F</color>
-    <color name="purple_500">#0F38B1</color>
-    <color name="purple_700">#0F38B1</color>
-    <color name="teal_200">#FF9A1F</color>
-    <color name="teal_700">#FF9A1F</color>
-    <color name="black">#FF000000</color>
+    <color name="purple_200">#D054FF</color>
+    <color name="purple_500">#D500F9</color>
+    <color name="purple_700">#D500F9</color>
+    <color name="teal_200">#D054FF</color>
+    <color name="teal_700">#D054FF</color>
+    <color name="black">#131313</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#0F38B1</color>
-    <color name="colorPrimaryDark">#0F38B1</color>
-    <color name="colorAccent">#FF9A1F</color>
-    <color name="cardBackground">#EFF3FF</color>
-    <color name="cardBorder">#E0E9FF</color>
-    <color name="secondaryColor">#FF9A1F</color>
+    <color name="colorPrimary">#D500F9</color>
+    <color name="colorPrimaryDark">#D500F9</color>
+    <color name="colorAccent">#D054FF</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="cardBorder">#676A76</color>
+    <color name="secondaryColor">#D054FF</color>
     <color name="radioColor">#DCDCDC</color>
-    <color name="colorSplash">#2D338C</color>
+    <color name="colorSplash">#E040FB</color>
     <color name="lightGray">#E0E0E0</color>
-    <color name="disabledColor">#D3D3D3</color> <!-- Light gray for disabled background -->
+    <color name="disabledColor">#6B6E78</color> <!-- Light gray for disabled background -->
     <color name="disabledTextColor">#A9A9A9</color>
-    <color name="darkGray">#757575</color> <!-- Tamno siva za tekst -->
+    <color name="darkGray">#656972</color> <!-- For text -->
     <color name="light_gray">#F5F5F5</color>
     <color name="selected_item_background">#D3D3D3</color> <!-- Light gray for selected item background -->
-    <color name="pozadina">#E2FFDC</color>
-    <color name="input">#580969AD</color>
-    <color name="input2">#870969AD</color>
-    <color name="input3">#495184A8</color>
-    <color name="input4">#87C1D3EB</color>
+    <color name="background">#F5F4F9</color>
+    <color name="input">#7AA8A8A8</color>
+    <color name="input2">#99A8A8A8</color>
+    <color name="input3">#99C7C7C7</color>
+    <color name="input4">#96E2E2E2</color>
 
 
 </resources>
