@@ -3,25 +3,25 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/navigation_map"
         android:icon="@drawable/ic_map"
-        android:title="Map" />
+        android:title="@string/map" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_challenges"
-        android:title="Settings" />
+        android:title="@string/settings" />
     <item
         android:id="@+id/navigation_progress"
         android:icon="@drawable/ic_progress"
-        android:title="Progress" />
+        android:title="@string/progress" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"
-        android:title="Profile" />
+        android:title="@string/profile" />
     <item
         android:id="@+id/navigation_logout"
         android:icon="@drawable/ic_logout"
-        android:title="Logout" />
+        android:title="@string/logout" />
 </menu>

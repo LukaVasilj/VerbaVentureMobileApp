@@ -7,6 +7,7 @@
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
     <string name="select_languagee">Odaberite jezik</string>
     <string name="select_language2">Odaberite jezik aplikacije:</string>
+    <string name="select_city">Odaberite grad</string>
 
     <string name="change_language">Izaberi jezik</string>
     <string name="confirm">Potvrdi</string>
@@ -98,6 +99,22 @@
     <string name="language_spanish">Španjolski</string>
     <string name="quiz_result_text">Tvoj rezultat : %1$d od %2$d</string>
     <string name="prikaziprijevod">Prikaži prijevod</string>
+
+    <string name="settingss">Postavke</string>
+    <string name="username">Korisničko ime: </string>
+    <string name="email">E-mail: </string>
+    <string name="changepassword">Promijeni lozinku</string>
+    <string name="notification">Pošalji mi obavijesti</string>
+    <string name="darkmode">Omogući tamni način</string>
+    <string name="currentl">Trenutni jezik: </string>
+    <string name="contantsupport">Kontaktiraj podršku:</string>
+
+    <string name="home">Početna</string>
+    <string name="map">Karta</string>
+    <string name="settings">Postavke</string>
+    <string name="progress">Napredak</string>
+    <string name="profile">Profil</string>
+    <string name="logout">Odjava</string>
 
     <string-array name="native_language_array">
         <item>Hrvatski</item>

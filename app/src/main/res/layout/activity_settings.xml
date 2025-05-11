@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings_drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bbackground">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +19,7 @@
             android:background="@color/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:title="Settings"
+            android:title="@string/settingss"
             android:titleTextColor="@android:color/white"
             android:elevation="4dp" />
 
@@ -55,7 +57,7 @@
                             android:id="@+id/usernameTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Username: "
+                            android:text="@string/username"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginBottom="8dp" />
@@ -64,7 +66,7 @@
                             android:id="@+id/emailTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Email: "
+                            android:text="@string/email"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:layout_marginBottom="16dp" />
@@ -74,7 +76,7 @@
                             android:id="@+id/changePasswordButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Change Password"
+                            android:text="@string/changepassword"
                             android:backgroundTint="@color/secondaryColor"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
@@ -93,7 +95,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Send me notifications"
+                                android:text="@string/notification"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -116,7 +118,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Enable Dark Mode"
+                                android:text="@string/darkmode"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -138,7 +140,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Current Language: "
+                                android:text="@string/currentl"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -166,7 +168,7 @@
                             android:id="@+id/contactSupportButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Contact Support"
+                            android:text="@string/contantsupport"
                             android:backgroundTint="@color/secondaryColor"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"

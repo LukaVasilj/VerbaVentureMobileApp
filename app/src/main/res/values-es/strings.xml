@@ -6,6 +6,7 @@
     <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
     <string name="google_maps_key">AIzaSyCvUMmXKwr-4yhnI5LaqXCqOfFa8dWi9vo</string>
     <string name="select_languagee">Seleccionar idioma</string>
+    <string name="select_city">Seleccionar ciudad</string>
     <string name="change_language">Cambiar idioma</string>
     <string name="confirm">Confirmar</string>
     <string name="register">Register</string>
@@ -98,6 +99,21 @@
     <string name="quiz_result_text">You scored %1$d out of %2$d</string>
     <string name="prikaziprijevod">Mostrar traducción</string>
 
+    <string name="settingss">Configuración</string>
+    <string name="username">Nombre de usuario: </string>
+    <string name="email">Correo electrónico: </string>
+    <string name="changepassword">Cambiar contraseña</string>
+    <string name="notification">Envíame notificaciones</string>
+    <string name="darkmode">Habilitar modo oscuro</string>
+    <string name="currentl">Idioma actual: </string>
+    <string name="contantsupport">Soporte de contacto:</string>
+
+    <string name="home">Inicio</string>
+    <string name="map">Mapa</string>
+    <string name="settings">Configuración</string>
+    <string name="progress">Progreso</string>
+    <string name="profile">Perfil</string>
+    <string name="logout">Cerrar sesión</string>
 
     <string-array name="native_language_array">
         <item>Croata</item>
