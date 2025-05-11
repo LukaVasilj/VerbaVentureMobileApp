@@ -17,7 +17,8 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:menu="@menu/main_menu" />
+            app:menu="@menu/main_menu"
+            android:background="@color/colorrPrimary"/>
 
         <!-- Main Content -->
         <ScrollView
@@ -150,12 +151,12 @@
                             android:id="@+id/adventureModeButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
-                            android:backgroundTint="@color/secondaryColor"
+                            android:layout_gravity="center_horizontal"
                             android:padding="12dp"
                             android:text="@string/adventure_mode"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/white"
+                            android:background="@drawable/button" />
 
                         </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -236,7 +237,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@color/colorSplash"
+        android:background="@color/colorrrPrimary"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
         app:menu="@menu/bottom_navigation_menu" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Hackaton</string>
+    <string name="app_name">Verba Venture</string>
     <string name="default_web_client_id">206913153355-ndb5vt06ef9kcr4sk44kkehvjqem13qp.apps.googleusercontent.com</string>
     <string name="navigation_drawer_open">Otvori navigacijski izbornik</string>
     <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
@@ -56,7 +56,7 @@
 
     <string name="use_current_location">Koristi trenutnu lokaciju</string>
 
-    <string name="select_language">-- Odaberite Jezik --</string>
+    <string name="select_language">Odaberite Jezik</string>
     <string name="select_location">-- Odaberite Lokaciju --</string>
 
     <string name="challenge_title">Naslov izazova: %1$s</string>
@@ -96,7 +96,8 @@
     <string name="language_english">Engleski</string>
     <string name="language_croatian">Hrvatski</string>
     <string name="language_spanish">Španjolski</string>
-    <string name="quiz_result_text">You scored %1$d out of %2$d</string>
+    <string name="quiz_result_text">Tvoj rezultat : %1$d od %2$d</string>
+    <string name="prikaziprijevod">Prikaži prijevod</string>
 
     <string-array name="native_language_array">
         <item>Hrvatski</item>

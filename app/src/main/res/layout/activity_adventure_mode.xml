@@ -3,43 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardBackground"
+    android:background="@drawable/bbackground"
     tools:context=".user.adventure.AdventureModeActivity">
 
-    <!-- Karta unutar CardView -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/mapCardView"
+    <!-- ProgressBar for loading -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:scaleX="1.5"
+        android:scaleY="1.5" />
+
+    <!-- Main content (hidden initially) -->
+    <RelativeLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@color/white">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-        <fragment
-            android:id="@+id/mapFragment"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="300dp" />
-    </androidx.cardview.widget.CardView>
-
-    <!-- Lista mjesta (uređena sa stilizacijom) -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mapCardView"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@color/white">
-
-        <ListView
-            android:id="@+id/placesListView"
+        <!-- Karta unutar CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mapCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:divider="@drawable/divider"
-            android:dividerHeight="1dp"
-            android:background="@android:color/transparent" />
-    </androidx.cardview.widget.CardView>
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/white">
+
+            <fragment
+                android:id="@+id/mapFragment"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Lista mjesta (uređena sa stilizacijom) -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mapCardView"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/white">
+
+            <ListView
+                android:id="@+id/placesListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:divider="@drawable/divider"
+                android:dividerHeight="1dp"
+                android:background="@android:color/transparent" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </RelativeLayout>

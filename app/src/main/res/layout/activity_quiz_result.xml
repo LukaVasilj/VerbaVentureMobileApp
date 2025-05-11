@@ -19,7 +19,7 @@
         android:id="@+id/goToStartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Idi na početak"
+        android:text="@string/gohomebutton"
         android:backgroundTint="@color/secondaryColor"
         android:textColor="@color/white"
         android:layout_marginTop="16dp" />

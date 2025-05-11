@@ -4,15 +4,18 @@ package ba.sum.fsre.hackaton.user.adventure;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,6 +66,22 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adventure_mode);
 
+        // Find views
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        RelativeLayout mainContent = findViewById(R.id.mainContent);
+
+        // Show ProgressBar and delay the main logic
+        new Handler().postDelayed(() -> {
+            // Hide ProgressBar and show main content
+            progressBar.setVisibility(View.GONE);
+            mainContent.setVisibility(View.VISIBLE);
+
+            // Execute the rest of the logic
+            initializeActivity();
+        }, 3000); // 3 seconds delay
+    }
+
+    private void initializeActivity() {
         // Get selected values from intent
         String nativeLanguage = getIntent().getStringExtra("nativeLanguage");
         String learningLanguage = getIntent().getStringExtra("learningLanguage");
@@ -93,7 +112,6 @@ public class AdventureModeActivity extends AppCompatActivity implements OnMapRea
 
         // Get the localized string for "Use current location"
         String useCurrentLocation = getString(R.string.use_current_location);
-
 
         // Set selected location based on city or current location
         if (city != null && !city.equals(useCurrentLocation)) {

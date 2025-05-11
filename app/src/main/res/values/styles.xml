@@ -8,6 +8,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorError">@color/custom_error_color</item>
+
     </style>
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button</item>
@@ -15,6 +17,12 @@
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing">0.02</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item> <!-- Adjusted width -->
+    </style>
+    <style name="CustomRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/gelasio</item>
+        <item name="android:textSize">16sp</item> <!-- Optional: Adjust text size -->
+        <item name="android:textColor">@color/black</item> <!-- Optional: Adjust text color -->
     </style>
 
 </resources>

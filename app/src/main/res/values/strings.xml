@@ -96,6 +96,7 @@
     <string name="language_croatian">Croatian</string>
     <string name="language_spanish">Spanish</string>
     <string name="quiz_result_text">You scored %1$d out of %2$d</string>
+    <string name="prikaziprijevod">Show word</string>
 
 
     <string-array name="native_language_array">

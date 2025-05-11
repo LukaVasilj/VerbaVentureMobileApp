@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
 
     <!-- Navbar -->
     <TextView
@@ -26,8 +28,14 @@
 
     <Button
         android:id="@+id/confirmButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm"
-        android:layout_marginTop="16dp" />
+        android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:text="@string/confirm"
+    android:layout_marginTop="16dp"
+    android:background="@color/colorrrPrimary"
+    android:textColor="@color/white"
+    android:textSize="18sp"
+    android:letterSpacing="0.02"
+    android:textStyle="bold"
+    android:layout_marginBottom="15dp" />
 </LinearLayout>

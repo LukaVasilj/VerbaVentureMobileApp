@@ -39,15 +39,16 @@
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:textColor="@color/black"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/lobster"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/background"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/radiocolor"
                     android:layout_marginBottom="24dp">
 
                     <LinearLayout
@@ -62,7 +63,8 @@
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            android:padding="8dp" />
+                            android:padding="8dp"
+                            android:fontFamily="@font/gelasio"/>
 
                         <TextView
                             android:id="@+id/pointsTextView"
@@ -72,7 +74,8 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"
-                            android:padding="8dp" />
+                            android:padding="8dp"
+                            android:fontFamily="@font/gelasio"/>
 
                         <TextView
                             android:id="@+id/distanceTextView"
@@ -83,7 +86,8 @@
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"
                             android:padding="8dp"
-                            android:text="@string/distance" />
+                            android:text="@string/distance"
+                            android:fontFamily="@font/gelasio"/>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

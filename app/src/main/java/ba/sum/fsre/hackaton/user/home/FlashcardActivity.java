@@ -46,6 +46,8 @@ public class FlashcardActivity extends AppCompatActivity {
         // Initialize flashcards
         flashcards = getFlashcards();
 
+
+
         // Set initial progress
         progressBar.setMax(flashcards.size() + 5); // Total progress (flashcards + quiz)
         updateProgress(progressBar, progressTextView, currentIndex);
@@ -61,6 +63,8 @@ public class FlashcardActivity extends AppCompatActivity {
             showTranslationButton.setVisibility(View.GONE);
             nextButton.setVisibility(View.VISIBLE); // Show the "Next" button
         });
+
+
 
         nextButton.setOnClickListener(v -> {
             currentIndex++;

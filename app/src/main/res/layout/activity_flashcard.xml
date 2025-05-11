@@ -2,7 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bbackground">
+
 
     <!-- Top Navigation Bar -->
     <androidx.appcompat.widget.Toolbar
@@ -98,14 +100,16 @@
             android:id="@+id/showTranslationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prikaži prijevod"
-            android:layout_marginBottom="16dp" />
+            android:text="@string/show_translate"
+            android:layout_marginBottom="16dp"
+            style="@style/ButtonStyle" />
 
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
-            android:visibility="gone" />
+            android:text="@string/next"
+            android:visibility="gone"
+            style="@style/ButtonStyle" />
     </LinearLayout>
 </LinearLayout>

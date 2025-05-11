@@ -7,6 +7,7 @@
     android:background="@drawable/language_option_background"
     android:layout_marginBottom="16dp">
 
+
     <ImageView
         android:id="@+id/cardIcon"
         android:layout_width="48dp"
@@ -14,6 +15,7 @@
         android:src="@drawable/ic_launcher_foreground"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp" />
+
 
     <TextView
         android:id="@+id/cardTitle"
@@ -48,7 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        android:backgroundTint="@color/secondaryColor"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="@style/ButtonStyle" />
 </LinearLayout>

@@ -2,7 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/bbackground">
+
 
     <!-- Progress Bar Section -->
     <LinearLayout
@@ -47,13 +49,14 @@
         android:background="@drawable/language_option_background"
         android:padding="8dp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:gravity="center"> <!-- Ensures the child is centered -->
 
         <ImageView
             android:id="@+id/questionImageView"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:scaleType="centerInside" />
+            android:scaleType="fitCenter" /> <!-- Adjust scaleType for proper centering -->
     </LinearLayout>
 
     <RadioGroup
@@ -62,13 +65,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        style="@style/CustomRadioButtonStyle" />
+
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/submit"
         android:backgroundTint="@color/secondaryColor"
         android:textColor="@color/white"
         android:layout_marginTop="16dp" />
